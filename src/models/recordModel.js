@@ -27,7 +27,7 @@ record.sync({force: false})
         console.log('Record table synced')
     })
     .catch((error) =>{
-        console.log('the connection with Record table going wrong ${error}')
+        console.log(`the connection with Record table going wrong ${error}`)
     })
 
 module.exports = record

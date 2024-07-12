@@ -39,6 +39,15 @@ h1{
     box-shadow: 0 0 30px white;
 }
 
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
 h2{
     font-size: 35px;
     letter-spacing: 3px;

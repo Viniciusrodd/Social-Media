@@ -12,23 +12,22 @@
         <h1>Bem vindo a minha nova social media</h1>
         <div id="div-filho">
             <h2>SignUp</h2>
-            <input type="text" name="name" id="inome" placeholder="Full Name">
-            <input type="text" name="username" id="iusername" placeholder="User Name">
-            <input type="text" name="email" id="iemail" placeholder="Email">
-            <input type="password" name="password" id="ipassword" placeholder="Password">
-
-            <div id="input-radio">
-                <input type="radio" name="male" id="imale" class="radio"> 
-                <label for="imale">Male</label>
-                <input type="radio" name="female" id="ifemale" class="radio">
-                <label for="ifemale">Female</label>
-            </div>
-
-            <p id="p-registro">Already have an account</p>
-
-            <button>
-                Register
-            </button>
+            <form method="post" action="/savingRecords">
+                <input type="text" name="name" id="inome" placeholder="Full Name">
+                <input type="text" name="username" id="iusername" placeholder="User Name">
+                <input type="text" name="email" id="iemail" placeholder="Email">
+                <input type="password" name="password" id="ipassword" placeholder="Password">
+                <div id="input-radio">
+                    <input type="radio" name="male" id="imale" class="radio">
+                    <label for="imale">Male</label>
+                    <input type="radio" name="female" id="ifemale" class="radio">
+                    <label for="ifemale">Female</label>
+                </div>
+                <p id="p-registro">Already have an account</p>
+                <button>
+                    Register
+                </button>
+            </form>
         </div>
     </div>
 </body>
