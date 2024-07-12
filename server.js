@@ -6,8 +6,11 @@ const sequelize = require('sequelize')
 const bodyparser = require('body-parser')
 
 
+
 //IMPORTANDO CONEXÃO
 const connection = require('./src/connection/connection')
+
+
 
 //AUTENTICANDO CONEXÃO COM BANCO DE DADOS
 connection.authenticate()
@@ -18,9 +21,26 @@ connection.authenticate()
         console.log(`erro ${erro}`)
     })
 
-app.get('/', (req, res) =>{
-    
-})
+
+
+//SINCRONIZANDO AS TABELAS COM BANCO DE DADOS
+connection.sync({force: false})
+    .then(() =>{
+        console.log('Database sincronizado')
+    })
+    .catch((error) =>{
+        console.log('Erro de sincronização')
+    })
+
+
+
+//SETANDO EJS COMO VIEW ENGINE
+app.set('view engine', 'ejs')
+
+
+
+//USANDO PASTA PUBLIC PARA ARQUIVOS ESTÁTICOS
+app.use(express.static('public'))
 
 
 
@@ -29,6 +49,13 @@ app.use(bodyparser.urlencoded({
     extended: false
 }))
 app.use(bodyparser.json())
+
+
+
+//IMPORTANDO CONTROLLERS COM ROUTER
+const userController = require('./src/controllers/usersController')
+//FAZENDO EXPRESS USAR ROTAS DEFINIDAS POR ROUTER COM PREFIXO /
+app.use('/', userController)
 
 
 
