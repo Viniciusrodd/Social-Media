@@ -4,6 +4,7 @@ const express = require('express')
 const app = express()
 const sequelize = require('sequelize')
 const bodyparser = require('body-parser')
+const path = require('path');
 
 
 
@@ -36,7 +37,7 @@ connection.sync({force: false})
 
 //SETANDO EJS COMO VIEW ENGINE
 app.set('view engine', 'ejs')
-
+app.set('views', path.join(__dirname, 'src/views'));
 
 
 //USANDO PASTA PUBLIC PARA ARQUIVOS ESTÁTICOS
