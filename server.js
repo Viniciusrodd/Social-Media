@@ -16,6 +16,20 @@ const connection = require('./src/connection/connection')
 //IMPORTANDO MINHAS TABELAS
 const recordModel = require('./src/models/recordModel')
 
+//LÓGICA DE EXCLUSÃO DE DADOS DA TABELA RECORD PARA TESTES
+function destroyData() {
+    recordModel.destroy({
+        where: {}
+    })
+    .then(() =>{
+        console.log('deleted datas')
+    })
+    .catch((error) =>{
+        console.log('error in delete datas')
+    })
+}
+
+
 
 
 //AUTENTICANDO CONEXÃO COM BANCO DE DADOS

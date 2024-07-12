@@ -38,7 +38,7 @@ router.post('/savingRecords', (req, res) =>{
     })
     .then(() =>{
         console.log('Table Fields created')
-        res.render('userEjs/record')
+        res.render('userEjs/login')
     })
     .catch((error) =>{
         console.log(`erro ao criar campos ${error}`)
