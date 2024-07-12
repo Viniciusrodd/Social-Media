@@ -12,7 +12,7 @@ html, body{
 
 h1{
     color: rgb(0, 43, 79);
-    text-shadow: 5px 5px 8px rgba(71, 114, 255, 0.639);
+    text-shadow: 5px 5px 8px white;
     margin: 0px 0px 20px 0px;
     font-size: 45px;
 }
@@ -24,7 +24,7 @@ h1{
     align-items: center;
     height: 100vh;
     width: 100%;
-    background-color: rgb(231, 244, 255);
+    background-color: rgb(184, 208, 225);
 }
 
 #div-filho{
@@ -35,6 +35,8 @@ h1{
     align-items: center;
     padding: 30px;
     width: 40%;
+    border-radius: 20px;
+    box-shadow: 0 0 30px white;
 }
 
 h2{
@@ -49,10 +51,11 @@ input{
     border: none;
     font-size: 17px;
     margin: 0px 0px 10px 0px;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 
 input:focus {
-    box-shadow: 0 0 15px rgba(0, 0, 255, 0.491);
+    box-shadow: 0 0 15px white;
     outline: none; 
 }
 
@@ -94,8 +97,9 @@ button{
     background-color: white;
     font-size: 19px;
     cursor: pointer;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 button:hover{
-    box-shadow: 0 0 15px rgba(0, 0, 255, 0.491);
+    box-shadow: 0 0 15px white;
     outline: none;
 }
