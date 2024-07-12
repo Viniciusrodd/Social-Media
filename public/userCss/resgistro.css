@@ -1,0 +1,101 @@
+
+@charset "UTF-8";
+
+*{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+html, body{
+    margin: 0px;
+    padding: 0px;
+}
+
+h1{
+    color: rgb(0, 43, 79);
+    text-shadow: 5px 5px 8px rgba(71, 114, 255, 0.639);
+    margin: 0px 0px 20px 0px;
+    font-size: 45px;
+}
+
+#div-pai{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-color: rgb(231, 244, 255);
+}
+
+#div-filho{
+    background-color: rgb(179, 219, 252);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    width: 40%;
+}
+
+h2{
+    font-size: 35px;
+    letter-spacing: 3px;
+    margin: 0px 0px 20px 0px;
+}
+
+input{
+    height: 38px;
+    width: 80%;
+    border: none;
+    font-size: 17px;
+    margin: 0px 0px 10px 0px;
+}
+
+input:focus {
+    box-shadow: 0 0 15px rgba(0, 0, 255, 0.491);
+    outline: none; 
+}
+
+input::placeholder{
+    color: rgba(0, 0, 0, 0.35);
+}
+
+#input-radio{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: 40px;
+    width: 81%;
+    cursor: pointer;
+}
+
+label{
+    font-size: 17px;
+    margin: 0px 10px 0px 0px;
+}
+
+.radio{
+    height: 18px;
+    width: 15px;
+    margin: 0px 5px 0px 5px;
+}
+
+#p-registro{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0px 20px 0px;
+}
+
+button{
+    height: 40px;
+    width: 30%;
+    border: none;
+    background-color: white;
+    font-size: 19px;
+    cursor: pointer;
+}
+button:hover{
+    box-shadow: 0 0 15px rgba(0, 0, 255, 0.491);
+    outline: none;
+}
