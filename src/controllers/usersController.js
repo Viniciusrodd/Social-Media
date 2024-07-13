@@ -56,6 +56,8 @@ router.post('/savingRecords', (req, res) =>{
                 console.log(`erro ao criar campos ${error}`)
             })
         }else{
+            //gerando msg de aviso sobre email já existente no front com queryparams
+            //queryparams(não é recomendável por segurança)
             res.redirect('/cadastro?error=Email já está em uso, tente outro.')
         }
     })
