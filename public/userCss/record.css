@@ -79,7 +79,6 @@ input::placeholder{
     align-items: center;
     height: 40px;
     width: 81%;
-    cursor: pointer;
 }
 
 label{
@@ -91,6 +90,7 @@ label{
     height: 18px;
     width: 15px;
     margin: 0px 5px 0px 5px;
+    cursor: pointer;
 }
 
 #p-registro{

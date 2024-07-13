@@ -3,6 +3,7 @@
 const express = require('express')
 const router = express.Router()
 const recordModel = require('../models/recordModel')
+const { where } = require('sequelize')
 
 
 
@@ -29,6 +30,17 @@ router.post('/savingRecords', (req, res) =>{
     if(!maleVar && !femaleVar){
         res.redirect('userEjs/record')
     }
+
+    recordModel.findOne({
+        where: {
+            email: emailVar
+        }
+    })
+    .then((dadosEmail) =>{
+        if(dadosEmail == undefined){
+            
+        }
+    })
 
     recordModel.create({
         fullName: nameVar,
