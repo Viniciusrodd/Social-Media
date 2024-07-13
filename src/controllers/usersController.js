@@ -55,14 +55,18 @@ router.post('/savingRecords', (req, res) =>{
             .catch((error) =>{
                 console.log(`erro ao criar campos ${error}`)
             })
+        }else{
+            res.redirect('/cadastro?error=Email já está em uso, tente outro.')
         }
     })
 })
 
 
+//ROTA DE LOGIN
 router.get('/login', (req, res) =>{
     res.render('userEjs/login')
 })
+
 
 
 module.exports = router
