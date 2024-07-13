@@ -37,6 +37,10 @@
             const errorMsg = urlParams.get('error')
             if(errorMsg){
                 alert(errorMsg)
+                // Remove o parâmetro 'error' da URL
+                urlParams.delete('error');
+                const newUrl = window.location.pathname + '?' + urlParams.toString();
+                history.replaceState(null, '', newUrl);
             }
         })
     </script>

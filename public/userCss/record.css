@@ -28,7 +28,7 @@ h1{
 }
 
 #div-filho{
-    background-color: rgb(179, 219, 252);
+    background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -61,10 +61,11 @@ input{
     font-size: 17px;
     margin: 0px 0px 10px 0px;
     transition: border 0.3s ease, box-shadow 0.3s ease;
+    background-color: rgba(255, 255, 255, 0);
+    border-bottom: 2px solid black;
 }
 
 input:focus {
-    box-shadow: 0 0 15px white;
     outline: none; 
 }
 
@@ -103,12 +104,12 @@ button{
     height: 40px;
     width: 30%;
     border: none;
-    background-color: white;
+    background-color: rgb(184, 208, 225);
     font-size: 19px;
     cursor: pointer;
     transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 button:hover{
-    box-shadow: 0 0 15px white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.378);
     outline: none;
 }
