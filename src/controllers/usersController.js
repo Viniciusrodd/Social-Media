@@ -4,6 +4,7 @@ const express = require('express')
 const router = express.Router()
 const recordModel = require('../models/recordModel')
 const { where } = require('sequelize')
+const bcrypt = require('bcryptjs')
 
 
 
@@ -23,14 +24,14 @@ router.post('/savingRecords', (req, res) =>{
     var maleVar = req.body.male
     var femaleVar = req.body.female
 
+    //VERIFICAÇÕES:
     if(!nameVar || !userNameVar || !emailVar || !passwordVar){
         res.redirect('userEjs/record')
     }
-
     if(!maleVar && !femaleVar){
         res.redirect('userEjs/record')
     }
-
+    //VERIFICAÇÃO DE EXISTENCIA DE EMAIL E GERAÇÃO DE HASH
     recordModel.findOne({
         where: {
             email: emailVar
@@ -38,23 +39,29 @@ router.post('/savingRecords', (req, res) =>{
     })
     .then((dadosEmail) =>{
         if(dadosEmail == undefined){
-            
+            var salt = bcrypt.genSaltSync(10)
+            var hash = bcrypt.hashSync(passwordVar, salt)
+
+            recordModel.create({
+                fullName: nameVar,
+                userName: userNameVar,
+                email: emailVar,
+                password: hash
+            })
+            .then(() =>{
+                console.log('Table Fields created')
+                res.redirect('/login')
+            })
+            .catch((error) =>{
+                console.log(`erro ao criar campos ${error}`)
+            })
         }
     })
+})
 
-    recordModel.create({
-        fullName: nameVar,
-        userName: userNameVar,
-        email: emailVar,
-        password: passwordVar
-    })
-    .then(() =>{
-        console.log('Table Fields created')
-        res.render('userEjs/login')
-    })
-    .catch((error) =>{
-        console.log(`erro ao criar campos ${error}`)
-    })
+
+router.get('/login', (req, res) =>{
+    res.render('userEjs/login')
 })
 
 
