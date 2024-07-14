@@ -1,0 +1,59 @@
+
+@charset "UTF-8";
+
+*{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+html, body{
+    margin: 0px;
+    padding: 0px;
+}
+
+#navBar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: 18vh;
+    width: 100%;
+    background-color: rgb(184, 208, 225);
+}
+
+#div-logo{
+    height: 90px;
+    width: 90px;
+    border-radius: 100px;
+    background-color: white;
+    transition: transform 0.3s ease;
+}
+#div-logo:hover{
+    transform: scale(1.03);
+}
+
+#div-links{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 40%;
+    justify-content: space-around;
+}
+
+p{
+    font-size: 19px;
+    font-weight: bold;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    text-decoration: underline;
+}
+
+#div-pesquisa{
+    height: 40px;
+    width: 60px;
+    background-color: white;
+}
