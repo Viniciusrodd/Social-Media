@@ -86,10 +86,26 @@ router.post('authenticate', (req, res) =>{
             //validar senha com Bcrypt
             var correct = bcrypt.compareSync(passwordVar, dadosLogin.password)
             if(correct){
-                
+                //criando sessão
+                req.session.user = {
+                    id: dadosLogin.id,
+                    email: dadosLogin.email
+                }
+                res.redirect('/homepage')
+            }else{
+                res.redirect('/login?error=Email inválido.')
             }
+        }else{
+            res.redirect('/login?error=Email inválido.')
         }
     })
+})
+
+
+
+//ROTA DA HOME PAGE
+router.get('/homepage', (req, res) =>{
+    res.render('paginasBase/homePage')
 })
 
 
