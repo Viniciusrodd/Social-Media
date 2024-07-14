@@ -6,6 +6,7 @@ const sequelize = require('sequelize')
 const bodyparser = require('body-parser')
 const path = require('path');
 const session = require('express-session')
+const userAuth = require('./src/middlewares/authenticate')
 
 
 //IMPORTANDO CONEXÃO

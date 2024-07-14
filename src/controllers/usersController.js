@@ -5,6 +5,7 @@ const router = express.Router()
 const recordModel = require('../models/recordModel')
 const { where } = require('sequelize')
 const bcrypt = require('bcryptjs')
+const userAuth = require('../middlewares/authenticate')
 
 
 
@@ -64,9 +65,21 @@ router.post('/savingRecords', (req, res) =>{
 })
 
 
+
 //ROTA DE LOGIN
 router.get('/login', (req, res) =>{
     res.render('userEjs/login')
+})
+
+
+
+//ROTA DA HOME PAGE
+router.get('/homepage', userAuth, (req, res) =>{
+    if(userAuth){
+        res.render('paginasBase/homePage')
+    }else{
+        res.redirect('/login?error=Preciso fazer login para acessar.')
+    }  
 })
 
 
@@ -103,9 +116,10 @@ router.post('/authenticate', (req, res) =>{
 
 
 
-//ROTA DA HOME PAGE
-router.get('/homepage', (req, res) =>{
-    res.render('paginasBase/homePage')
+//ROTA DE LOGOUT
+router.get('/logout', (req, res) =>{
+    req.session.user = undefined
+    res.redirect('/login')
 })
 
 
