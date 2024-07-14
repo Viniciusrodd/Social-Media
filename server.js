@@ -5,7 +5,7 @@ const app = express()
 const sequelize = require('sequelize')
 const bodyparser = require('body-parser')
 const path = require('path');
-
+const session = require('express-session')
 
 
 //IMPORTANDO CONEXÃO
@@ -78,6 +78,16 @@ app.use(bodyparser.json())
 const userController = require('./src/controllers/usersController')
 //FAZENDO EXPRESS USAR ROTAS DEFINIDAS POR ROUTER COM PREFIXO /
 app.use('/', userController)
+
+
+
+//USANDO 'SESSÃO' PARA ARMAZENAR DADOS DO USER
+app.use(session({
+    secret: 'textoqualquerparaaumentarsegurançadesessão',
+    cookie: {
+        maxAge: 300000
+    }
+}))
 
 
 
