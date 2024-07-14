@@ -100,6 +100,14 @@ label{
     margin: 10px 0px 20px 0px;
 }
 
+a{
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    text-decoration: underline;
+}
+
 button{
     height: 40px;
     width: 30%;
