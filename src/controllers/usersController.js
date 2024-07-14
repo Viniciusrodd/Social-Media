@@ -72,7 +72,7 @@ router.get('/login', (req, res) =>{
 
 
 //ROTA DE AUTENTICAÇÃO DE USER
-router.post('authenticate', (req, res) =>{
+router.post('/authenticate', (req, res) =>{
     var emailVar = req.body.email
     var passwordVar = req.body.password
 

@@ -74,13 +74,6 @@ app.use(bodyparser.json())
 
 
 
-//IMPORTANDO CONTROLLERS COM ROUTER
-const userController = require('./src/controllers/usersController')
-//FAZENDO EXPRESS USAR ROTAS DEFINIDAS POR ROUTER COM PREFIXO /
-app.use('/', userController)
-
-
-
 //USANDO 'SESSÃO' PARA ARMAZENAR DADOS DO USER
 app.use(session({
     secret: 'textoqualquerparaaumentarsegurançadesessão',
@@ -88,6 +81,13 @@ app.use(session({
         maxAge: 300000
     }
 }))
+
+
+
+//IMPORTANDO CONTROLLERS COM ROUTER
+const userController = require('./src/controllers/usersController')
+//FAZENDO EXPRESS USAR ROTAS DEFINIDAS POR ROUTER COM PREFIXO /
+app.use('/', userController)
 
 
 
