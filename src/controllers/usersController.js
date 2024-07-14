@@ -71,4 +71,27 @@ router.get('/login', (req, res) =>{
 
 
 
+//ROTA DE AUTENTICAÇÃO DE USER
+router.post('authenticate', (req, res) =>{
+    var emailVar = req.body.email
+    var passwordVar = req.body.password
+
+    recordModel.findOne({
+        where: {
+            email: emailVar,
+        }
+    })
+    .then((dadosLogin) =>{
+        if(dadosLogin != undefined){
+            //validar senha com Bcrypt
+            var correct = bcrypt.compareSync(passwordVar, dadosLogin.password)
+            if(correct){
+                
+            }
+        }
+    })
+})
+
+
+
 module.exports = router
