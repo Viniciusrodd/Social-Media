@@ -1,0 +1,9 @@
+
+
+#pastas para ignorar
+connection/
+node_modules/
+models/
+
+#arquivos para ignorar
+server.js
