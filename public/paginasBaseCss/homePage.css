@@ -105,6 +105,8 @@ a:hover{
     box-shadow: rgba(0, 0, 0, 0.226) 0px 2px 8px 0px inset;
 }
 
+/*SHORTCUTS*/
+
 div#shortcuts{
     display: flex;
     flex-direction: column;
@@ -128,11 +130,12 @@ div#shortcuts{
 
 ul{
     padding: 2px;
+    margin: 0px;
 }
 
 li{
     font-size: 20px;
-    margin: 5px 0px 0px 0px;
+    margin: 8px 0px 0px 0px;
     cursor: pointer;
     transition: transform 0.5s ease;
 }
@@ -144,7 +147,13 @@ li .material-icons {
     font-size: 30px;
 }
 
+/*PUBLICATIONS*/
+
 div#publications{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
     height: 30vh;
     width: 50%;
     background-color: white;
@@ -153,6 +162,23 @@ div#publications{
     rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
     margin-right: 5px;
 }
+
+#perfil-image{
+    height: 18vh;
+    width: 110px;
+    margin-top: 20px;
+    border: 3px solid black;
+}
+
+#publications-post{
+    height: 23vh;
+    width: 70%;
+    margin-top: 20px;
+    border: 3px solid black;
+}
+
+
+/*PAGES*/
 
 div#your-pages{
     height: 20vh;
