@@ -6,6 +6,7 @@ const recordModel = require('../models/recordModel')
 const { where } = require('sequelize')
 const bcrypt = require('bcryptjs')
 const userAuth = require('../middlewares/authenticate')
+const profileModel = require('../models/profileModel')
 
 
 
@@ -113,7 +114,13 @@ router.post('/savingProfile', (req, res) =>{
     var countryVar = req.body.country
     var aboutVar = req.body.about
 
-
+    profileModel.create({
+        name: nameVar,
+        date: dateVar,
+        city: cityVar,
+        country: countryVar,
+        about: aboutVar
+    })
 })
 
 
