@@ -87,8 +87,10 @@ app.use(session({
 
 //IMPORTANDO CONTROLLERS COM ROUTER
 const userController = require('./src/controllers/usersController')
+const navigationController = require('./src/controllers/navigationController')
 //FAZENDO EXPRESS USAR ROTAS DEFINIDAS POR ROUTER COM PREFIXO /
 app.use('/', userController)
+app.use('/', navigationController)
 
 
 

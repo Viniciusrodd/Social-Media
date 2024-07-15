@@ -9,7 +9,7 @@ const userAuth = require('../middlewares/authenticate')
 
 
 
-//ROTA PRINCIPAL
+//ROTA CADASTRO
 router.get('/cadastro', (req, res) =>{
     res.render('userEjs/record')
 })
@@ -73,17 +73,6 @@ router.get('/login', (req, res) =>{
 
 
 
-//ROTA DA HOME PAGE
-router.get('/homepage', userAuth, (req, res) =>{
-    if(userAuth){
-        res.render('paginasBase/homePage')
-    }else{
-        res.redirect('/login?error=Preciso fazer login para acessar.')
-    }  
-})
-
-
-
 //ROTA DE AUTENTICAÇÃO DE USER
 router.post('/authenticate', (req, res) =>{
     var emailVar = req.body.email
@@ -112,14 +101,6 @@ router.post('/authenticate', (req, res) =>{
             res.redirect('/login?error=Email inválido.')
         }
     })
-})
-
-
-
-//ROTA DE LOGOUT
-router.get('/logout', (req, res) =>{
-    req.session.user = undefined
-    res.redirect('/login')
 })
 
 
