@@ -25,7 +25,6 @@
         </nav>
         
         <section id="section-container">
-
             <div id="shortcuts">
                 <h1 id="h1-shortcuts">SHORTCUTS</h1>
                 <ul style="list-style-type: none;">
@@ -49,19 +48,46 @@
 
             <div id="publications">
                 <div id="perfil-image">
-                    <p>perfil image</p>
+                    
                 </div>
-                <div id="publications-post">
-                    <p>publications</p>
+                <textarea id="publication-area" placeholder="Your publication here">
 
-                </div>
+                </textarea>
             </div>
 
             <div id="your-pages">
-                
+                <h1 id="h1-your-pages">YOUR PAGES</h1>
+
             </div>
-            
         </section>
+
+        <footer>
+            <p id="p-footer">2024 by Vinicius Rodrigues &copy</p>
+        </footer>
     </div>
+
+    <script src="/tinymce/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+            language: 'pt_BR',
+            selector: '#publication-area', 
+            plugins:[
+                'advlist',
+                'autolink',
+                'link',
+                'image',
+                'lists',
+                'preview',
+                'searchreplace',
+                'wordcount',
+                'fullscreen',
+                'insertdatetime',
+                'media',
+                'save',
+                'table',
+                'emoticons'
+            ],
+        })
+    </script>
 </body>
 </html>
