@@ -79,7 +79,7 @@ app.use(bodyparser.json())
 app.use(session({
     secret: 'textoqualquerparaaumentarsegurançadesessão',
     cookie: {
-        maxAge: 3000000000
+        maxAge: 300000000000
     }
 }))
 

@@ -26,4 +26,11 @@ router.get('/logout', (req, res) =>{
 })
 
 
+
+//ROTA DE PROFILE
+router.get('/profile', (req, res) =>{
+    res.render('paginasBase/profile')
+})
+
+
 module.exports = router
