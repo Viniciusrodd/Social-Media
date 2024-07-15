@@ -109,7 +109,7 @@ div#shortcuts{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     height: 50vh;
     width: 20%;
     background-color: white;
@@ -120,14 +120,28 @@ div#shortcuts{
 }
 
 #h1-shortcuts{
-    font-size: 35px;
-    text-decoration: underline;
-    margin: 10px 0px 5px 20px;
+    font-size: 30px;
+    color: rgba(163, 20, 111, 0.981);
+    text-decoration: overline;
+    margin: 0px;
+}
+
+ul{
+    padding: 2px;
 }
 
 li{
     font-size: 20px;
-    margin: 0px 0px 8px 0px;
+    margin: 5px 0px 0px 0px;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+}
+li:hover{
+    transform: scale(1.08);
+}
+
+li .material-icons {
+    font-size: 30px;
 }
 
 div#publications{
