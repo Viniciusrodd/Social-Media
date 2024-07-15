@@ -16,6 +16,7 @@ const connection = require('./src/connection/connection')
 
 //IMPORTANDO MINHAS TABELAS
 const recordModel = require('./src/models/recordModel')
+const profileModel = require('./src/models/profileModel')
 
 
 

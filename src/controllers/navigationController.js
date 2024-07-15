@@ -28,7 +28,7 @@ router.get('/logout', (req, res) =>{
 
 
 //ROTA DE PROFILE
-router.get('/profile', (req, res) =>{
+router.get('/profile', userAuth, (req, res) =>{
     res.render('paginasBase/profile')
 })
 

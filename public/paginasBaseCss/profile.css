@@ -115,8 +115,13 @@ a:hover{
     justify-content: flex-start;
     align-items: flex-end;
     height: 90vh;
-    width: 100%;
-    background-color: rgb(255, 197, 197);
+    width: 90%;
+    margin: 20px 0px 40px 0px;
+    border-radius: 30px;
+    background-color: white;
+    box-shadow: rgba(240, 46, 170, 0.4) 0px 5px, rgba(240, 46, 170, 0.3) 0px 10px,
+    rgba(240, 46, 170, 0.2) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px,
+    rgba(240, 46, 170, 0.05) 0px 25px;
 }
 
 #div-imagem-perfil{

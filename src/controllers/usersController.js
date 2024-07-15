@@ -105,4 +105,18 @@ router.post('/authenticate', (req, res) =>{
 
 
 
+//ROTA PARA SALVAR ALTERAÇÕES DE PROFILE
+router.post('/savingProfile', (req, res) =>{
+    var nameVar = req.body.name
+    var dateVar = req.body.date
+    var cityVar = req.body.city
+    var countryVar = req.body.country
+    var aboutVar = req.body.about
+
+
+})
+
+
+
+
 module.exports = router
