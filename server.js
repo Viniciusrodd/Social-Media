@@ -14,6 +14,18 @@ const connection = require('./src/connection/connection')
 
 
 
+
+//USANDO 'SESSÃO' PARA ARMAZENAR DADOS DO USER
+app.use(session({
+    secret: 'textoqualquerparaaumentarsegurançadesessão',
+    cookie: {
+        maxAge: 30000000000
+    }
+}))
+
+
+
+
 //IMPORTANDO MINHAS TABELAS
 const recordModel = require('./src/models/recordModel')
 const profileModel = require('./src/models/profileModel')
@@ -74,15 +86,6 @@ app.use(bodyparser.urlencoded({
 }))
 app.use(bodyparser.json())
 
-
-
-//USANDO 'SESSÃO' PARA ARMAZENAR DADOS DO USER
-app.use(session({
-    secret: 'textoqualquerparaaumentarsegurançadesessão',
-    cookie: {
-        maxAge: 300000000000
-    }
-}))
 
 
 

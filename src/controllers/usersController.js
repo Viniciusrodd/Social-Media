@@ -108,33 +108,18 @@ router.post('/authenticate', (req, res) =>{
 
 //ROTA PARA SALVAR ALTERAÇÕES DE PROFILE/ATUALIZANDO NAME DO CADASTRO
 router.post('/savingProfile', (req, res) =>{
-    var nameVar = req.body.name
     var dateVar = req.body.date
     var cityVar = req.body.city
     var countryVar = req.body.country
     var aboutVar = req.body.about
 
-    recordModel.findOne({
-        where: {
-            fullName: nameVar
-        }
-    })
-    .then((profileData) =>{
-        if(profileData == undefined){
-            return recordModel.update(
-                { fullName: nameVar })
-        } else{
-            throw new Error("Profile not found");
-        }
-    })
-    .then(() =>{
-        return profileModel.create({
+    profileModel.create({
             date: dateVar,
             city: cityVar,
             country: countryVar,
             about: aboutVar
         })
-    })
+   
     .then(() =>{
         res.redirect('/homepage')
     })
@@ -142,8 +127,7 @@ router.post('/savingProfile', (req, res) =>{
         console.log(error);
         res.redirect('/profile')
     })
-    
-})
+}) 
 
 
 
