@@ -120,10 +120,9 @@ router.post('/savingProfile', (req, res) =>{
         }
     })
     .then((profileData) =>{
-        if(profileData != undefined){
+        if(profileData == undefined){
             return recordModel.update(
-                { fullName: nameVar }, 
-                { where: {fullName: nameVar} })
+                { fullName: nameVar })
         } else{
             throw new Error("Profile not found");
         }
@@ -137,11 +136,11 @@ router.post('/savingProfile', (req, res) =>{
         })
     })
     .then(() =>{
-        res.status(200).json({ message: 'Profile updated and new data created successfully' });
+        res.redirect('/homepage')
     })
     .catch((error) =>{
         console.log(error);
-        res.status(500).json({ error: 'An error occurred while updating the profile or creating new data' });
+        res.redirect('/profile')
     })
     
 })
