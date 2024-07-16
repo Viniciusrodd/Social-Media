@@ -106,28 +106,34 @@ router.post('/authenticate', (req, res) =>{
 
 
 
-//ROTA PARA SALVAR ALTERAÇÕES DE PROFILE/ATUALIZANDO NAME DO CADASTRO
-router.post('/savingProfile', (req, res) =>{
-    var dateVar = req.body.date
-    var cityVar = req.body.city
-    var countryVar = req.body.country
-    var aboutVar = req.body.about
+router.post('/savingProfile', (req, res) => {
+    var dateVar = req.body.date;
+    var cityVar = req.body.city;
+    var countryVar = req.body.country;
+    var aboutVar = req.body.about;
 
+    // Validando se todos os campos necessários estão presentes
+    if (!dateVar || !cityVar || !countryVar || !aboutVar) {
+        console.log("Campos obrigatórios estão faltando");
+        return res.redirect('/profile'); // Redirecionar de volta para a página de perfil
+    }
+
+    // Criando o perfil no banco de dados
     profileModel.create({
-            date: dateVar,
-            city: cityVar,
-            country: countryVar,
-            about: aboutVar
-        })
-   
-    .then(() =>{
-        res.redirect('/homepage')
+        date: dateVar,
+        city: cityVar,
+        country: countryVar,
+        about: aboutVar
     })
-    .catch((error) =>{
-        console.log(error);
-        res.redirect('/profile')
+    .then(() => {
+        console.log("Dados do perfil criados com sucesso");
+        res.redirect('/homepage'); // Redirecionar para a página inicial após o sucesso
     })
-}) 
+    .catch((error) => {
+        console.log("Erro ao criar dados do perfil:", error);
+        res.redirect('/profile'); // Redirecionar de volta para a página de perfil em caso de erro
+    });
+});
 
 
 
