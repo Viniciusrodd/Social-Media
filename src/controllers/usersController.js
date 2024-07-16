@@ -106,7 +106,7 @@ router.post('/authenticate', (req, res) =>{
 
 
 
-//ROTA PARA SALVAR ALTERAÇÕES DE PROFILE
+//ROTA PARA SALVAR ALTERAÇÕES DE PROFILE/ATUALIZANDO NAME DO CADASTRO
 router.post('/savingProfile', (req, res) =>{
     var nameVar = req.body.name
     var dateVar = req.body.date
@@ -114,13 +114,36 @@ router.post('/savingProfile', (req, res) =>{
     var countryVar = req.body.country
     var aboutVar = req.body.about
 
-    profileModel.create({
-        name: nameVar,
-        date: dateVar,
-        city: cityVar,
-        country: countryVar,
-        about: aboutVar
+    recordModel.findOne({
+        where: {
+            fullName: nameVar
+        }
     })
+    .then((profileData) =>{
+        if(profileData != undefined){
+            return recordModel.update(
+                { fullName: nameVar }, 
+                { where: {fullName: nameVar} })
+        } else{
+            throw new Error("Profile not found");
+        }
+    })
+    .then(() =>{
+        return profileModel.create({
+            date: dateVar,
+            city: cityVar,
+            country: countryVar,
+            about: aboutVar
+        })
+    })
+    .then(() =>{
+        res.status(200).json({ message: 'Profile updated and new data created successfully' });
+    })
+    .catch((error) =>{
+        console.log(error);
+        res.status(500).json({ error: 'An error occurred while updating the profile or creating new data' });
+    })
+    
 })
 
 

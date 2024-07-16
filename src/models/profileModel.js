@@ -4,10 +4,6 @@ const connection = require('../connection/connection')
 
 
 const profile = connection.define('profile',{
-    name: {
-        type: sequelize.STRING,
-        allowNull: false
-    },
     date: {
         type: sequelize.STRING,
         allowNull: false
