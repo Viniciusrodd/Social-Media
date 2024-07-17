@@ -6,6 +6,7 @@ const recordModel = require('../models/recordModel')
 const { where } = require('sequelize')
 const bcrypt = require('bcryptjs')
 const userAuth = require('../middlewares/authenticate')
+const profileModel = require('../models/profileModel')
 
 
 //ROTA DA HOME PAGE
@@ -29,11 +30,11 @@ router.get('/logout', (req, res) =>{
 
 //ROTA DE PROFILE
 router.get('/profile', userAuth, (req, res) =>{
-
+    
     recordModel.findByPk(3)
         .then((dadosPegos) =>{
             res.render('paginasBase/profile', {
-                dados: dadosPegos
+                dadosRecord: dadosPegos
             })
         })
         .catch((error) =>{
