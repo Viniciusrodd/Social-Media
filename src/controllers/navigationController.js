@@ -29,7 +29,16 @@ router.get('/logout', (req, res) =>{
 
 //ROTA DE PROFILE
 router.get('/profile', userAuth, (req, res) =>{
-    res.render('paginasBase/profile')
+
+    recordModel.findByPk(3)
+        .then((dadosPegos) =>{
+            res.render('paginasBase/profile', {
+                dados: dadosPegos
+            })
+        })
+        .catch((error) =>{
+            console.log(error)
+        })
 })
 
 
