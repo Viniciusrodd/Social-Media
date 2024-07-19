@@ -6,7 +6,6 @@ const recordModel = require('../models/recordModel')
 const { where } = require('sequelize')
 const bcrypt = require('bcryptjs')
 const userAuth = require('../middlewares/authenticate')
-const profileModel = require('../models/profileModel')
 
 
 
@@ -105,7 +104,7 @@ router.post('/authenticate', (req, res) =>{
 })
 
 
-
+/*
 router.post('/savingProfile', (req, res) => {
     var dateVar = req.body.date;
     var cityVar = req.body.city;
@@ -134,7 +133,7 @@ router.post('/savingProfile', (req, res) => {
         res.redirect('/profile'); // Redirecionar de volta para a página de perfil em caso de erro
     });
 });
-
+*/
 
 
 

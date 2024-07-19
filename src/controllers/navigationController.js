@@ -6,7 +6,6 @@ const recordModel = require('../models/recordModel')
 const { where } = require('sequelize')
 const bcrypt = require('bcryptjs')
 const userAuth = require('../middlewares/authenticate')
-const profileModel = require('../models/profileModel')
 
 
 //ROTA DA HOME PAGE
@@ -41,6 +40,5 @@ router.get('/profile', userAuth, (req, res) =>{
             console.log(error)
         })
 })
-
 
 module.exports = router
