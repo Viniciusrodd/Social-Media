@@ -19,22 +19,6 @@ const record = connection.define('record',{
     password: {
         type: sequelize.STRING,
         allownull: false
-    },
-    date: {
-        type: sequelize.STRING,
-        allowNull: false
-    },
-    city: {
-        type: sequelize.STRING,
-        allowNull: false
-    },
-    country: {
-        type: sequelize.STRING,
-        allowNull: false
-    },
-    about: {
-        type: sequelize.STRING,
-        allowNull: false
     }
 })
 

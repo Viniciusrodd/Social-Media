@@ -30,7 +30,7 @@ router.get('/logout', (req, res) =>{
 //ROTA DE PROFILE
 router.get('/profile', userAuth, (req, res) =>{
     
-    recordModel.findByPk(3)
+    recordModel.findByPk(1)
         .then((dadosPegos) =>{
             res.render('paginasBase/profile', {
                 dadosRecord: dadosPegos

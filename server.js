@@ -9,9 +9,9 @@ const session = require('express-session')
 const userAuth = require('./src/middlewares/authenticate')
 
 
+
 //IMPORTANDO CONEXÃO
 const connection = require('./src/connection/connection')
-
 
 
 
@@ -22,7 +22,6 @@ app.use(session({
         maxAge: 30000000000
     }
 }))
-
 
 
 
