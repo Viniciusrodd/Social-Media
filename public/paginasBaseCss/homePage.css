@@ -152,13 +152,22 @@ li .material-icons {
 
 /*PUBLICATIONS*/
 
+#perfil-image{
+    height: 90px;
+    width: 90px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    background-image: url(./imagens/user.jpg);
+    background-size: cover;
+    background-position: center;
+}
 
 div#publications{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
-    align-items: flex-start;
-    padding: 20px;
+    align-items: center;
+    padding: 40px;
     width: 50%;
     border-radius: 20px;
     background-color: white;
@@ -168,16 +177,33 @@ div#publications{
     margin-right: 5px;
 }
 
-#perfil-image{
-    height: 90px;
-    width: 90px;
-    margin-right: 15px;
-    border-radius: 50%;
-    background-image: url(./imagens/user.jpg);
-    background-size: cover;
-    background-position: center;
+button{
+    height: 40px;
+    width: 120px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: rgb(241, 241, 241);
+    box-shadow: rgba(240, 46, 170, 0.4) 0px 5px, rgba(240, 46, 170, 0.3) 0px 10px,
+    rgba(240, 46, 170, 0.2) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px,
+    rgba(240, 46, 170, 0.05) 0px 25px;
+    transition: transform 0.5s ease;
+    cursor: pointer;
+}
+button:hover{
+    transform: scale(1.08);
+    background-color: rgb(233, 233, 233);
 }
 
+#publications-postings{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
 
 /*PAGES*/
 
