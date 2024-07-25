@@ -55,11 +55,14 @@
                 <div id="perfil-image">
                     
                 </div>
-                <textarea id="publication-area" placeholder="Your publication here">
+                <form action="/publications/postings" method="post">
+                    <input type="text" name="title" id="ititle" placeholder="Your Title here">
+                    
+                    <textarea id="publication-area" name="publiBody" placeholder="Your publication here">
 
-                </textarea>
-
-                <button>Publish</button>
+                    </textarea>
+                    <button>Publish</button>
+                </form>
 
                 <div id="publications-postings">
 

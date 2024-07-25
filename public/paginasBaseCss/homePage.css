@@ -152,16 +152,6 @@ li .material-icons {
 
 /*PUBLICATIONS*/
 
-#perfil-image{
-    height: 90px;
-    width: 90px;
-    margin-bottom: 20px;
-    border-radius: 50%;
-    background-image: url(./imagens/user.jpg);
-    background-size: cover;
-    background-position: center;
-}
-
 div#publications{
     display: flex;
     flex-direction: column;
@@ -175,6 +165,35 @@ div#publications{
     rgba(240, 46, 170, 0.2) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px,
     rgba(240, 46, 170, 0.05) 0px 25px;
     margin-right: 5px;
+}
+
+#perfil-image{
+    height: 90px;
+    width: 90px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    background-image: url(./imagens/user.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+input{
+    height: 40px;
+    width: 70%;
+    border: none;
+    font-size: 17px;
+    margin: 0px 0px 10px 80px;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+    background-color: rgba(255, 255, 255, 0);
+    border-bottom: 2px solid black;
+}
+
+input:focus {
+    outline: none; 
+}
+
+input::placeholder{
+    color: rgba(0, 0, 0, 0.35);
 }
 
 button{

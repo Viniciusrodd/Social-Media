@@ -104,7 +104,19 @@ router.post('/authenticate', (req, res) =>{
 })
 
 
+
+router.post('/publications/postings', (req, res) =>{
+    var publiArea = req.body.publiBody
+
+
+})
+
+
+
+
 /*
+ROTA PRA SALVAR PERFIL
+
 router.post('/savingProfile', (req, res) => {
     var dateVar = req.body.date;
     var cityVar = req.body.city;
