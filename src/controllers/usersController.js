@@ -3,6 +3,7 @@
 const express = require('express')
 const router = express.Router()
 const recordModel = require('../models/recordModel')
+const publicationModel = require('../models/publicationModel')
 const { where } = require('sequelize')
 const bcrypt = require('bcryptjs')
 const userAuth = require('../middlewares/authenticate')
@@ -109,7 +110,17 @@ router.post('/publications/postings', (req, res) =>{
     var titleVar = req.body.title
     var publiArea = req.body.publiBody
 
-    
+    publicationModel.create({
+        title: titleVar,
+        body: publiArea
+    })
+    .then(() =>{
+        console.log('Publications data created')
+        res.redirect('/homepage')
+    })
+    .catch((error) =>{
+        console.log(`error to created publications data ${error}`)
+    })
 })
 
 
