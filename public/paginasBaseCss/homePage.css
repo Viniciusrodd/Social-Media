@@ -216,12 +216,33 @@ button:hover{
     background-color: rgb(233, 233, 233);
 }
 
+#publications-postings-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    padding: 10px;
+    background-color: rgb(238, 243, 247);
+    border: 2px solid red;
+}
+
+#perfil-image-publications{
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    background-color: red;
+}
+
 #publications-postings{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    margin-top: 40px;
+    height: 80%;
+    width: 80%;
+    border: 2px solid black;
 }
 
 /*PAGES*/

@@ -64,9 +64,18 @@
                     <button>Publish</button>
                 </form>
 
-                <div id="publications-postings">
+                <% dadosPublications.forEach((dados) =>{ %>
+                    <div id="publications-postings-container">
+                        <div id="perfil-image-publications">
+                        
+                        </div>
 
-                </div>
+                        <div id="publications-postings">
+                            <h1><%= dados.title %></h1>
+                            <p><%= dados.body %></p>
+                        </div>
+                    </div>
+                <% }) %>
             </div>
             
 

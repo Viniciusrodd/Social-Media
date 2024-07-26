@@ -3,6 +3,7 @@
 const express = require('express')
 const router = express.Router()
 const recordModel = require('../models/recordModel')
+const publicationModel = require('../models/publicationModel')
 const { where } = require('sequelize')
 const bcrypt = require('bcryptjs')
 const userAuth = require('../middlewares/authenticate')
@@ -10,11 +11,19 @@ const userAuth = require('../middlewares/authenticate')
 
 //ROTA DA HOME PAGE
 router.get('/homepage', userAuth, (req, res) =>{
-    if(userAuth){
-        res.render('paginasBase/homePage')
-    }else{
-        res.redirect('/login?error=Preciso fazer login para acessar.')
-    }  
+    publicationModel.findAll()
+        .then((publicationData) =>{
+            if(userAuth){
+                res.render('paginasBase/homePage',{
+                    dadosPublications: publicationData
+                })
+            }else{
+                res.redirect('/login?error=Preciso fazer login para acessar.')
+            }  
+        })
+        .catch((error) =>{
+            console.log(`error in get publications data`)
+        })
 })
 
 
