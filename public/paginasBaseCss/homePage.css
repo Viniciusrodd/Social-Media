@@ -157,7 +157,7 @@ div#publications{
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    padding: 40px;
+    padding: 60px;
     width: 50%;
     border-radius: 20px;
     background-color: white;
@@ -204,7 +204,7 @@ button{
     border-radius: 10px;
     font-weight: bold;
     font-size: 16px;
-    background-color: rgb(241, 241, 241);
+    background-color: rgb(246, 246, 246);
     box-shadow: rgba(240, 46, 170, 0.4) 0px 5px, rgba(240, 46, 170, 0.3) 0px 10px,
     rgba(240, 46, 170, 0.2) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px,
     rgba(240, 46, 170, 0.05) 0px 25px;
@@ -219,19 +219,22 @@ button:hover{
 #publications-postings-container{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     margin-top: 40px;
-    padding: 10px;
-    background-color: rgb(238, 243, 247);
-    border: 2px solid red;
+    padding: 40px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, 
+    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 #perfil-image-publications{
-    height: 70px;
-    width: 70px;
+    height: 90px;
+    width: 90px;
+    margin-right: 30px;
     border-radius: 50%;
-    background-color: red;
+    background-color: black;
 }
 
 #publications-postings{
@@ -239,10 +242,11 @@ button:hover{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 40px;
     height: 80%;
     width: 80%;
-    border: 2px solid black;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
 }
 
 /*PAGES*/
