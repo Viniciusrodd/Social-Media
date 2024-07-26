@@ -27,6 +27,7 @@ app.use(session({
 
 //IMPORTANDO MINHAS TABELAS
 const recordModel = require('./src/models/recordModel')
+const publicationModel = require('./src/models/publicationModel')
 
 
 

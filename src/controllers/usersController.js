@@ -106,9 +106,10 @@ router.post('/authenticate', (req, res) =>{
 
 
 router.post('/publications/postings', (req, res) =>{
+    var titleVar = req.body.title
     var publiArea = req.body.publiBody
 
-
+    
 })
 
 
