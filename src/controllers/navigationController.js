@@ -14,8 +14,18 @@ router.get('/homepage', userAuth, (req, res) =>{
     publicationModel.findAll()
         .then((publicationData) =>{
             if(userAuth){
-                res.render('paginasBase/homePage',{
-                    dadosPublications: publicationData
+                const user = req.session.user
+                recordModel.findOne({
+                    where: {
+                        id: user.id
+                    }
+                })
+                .then((recordData) =>{
+                    res.render('paginasBase/homePage',{
+                        dadosPublications: publicationData,
+                        user,
+                        dadosRecord: recordData
+                    })
                 })
             }else{
                 res.redirect('/login?error=Preciso fazer login para acessar.')

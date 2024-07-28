@@ -250,6 +250,11 @@ button:hover{
     box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
 }
 
+#h2-publications{
+    font-size: 19px;
+    margin: 0px 0px 40px 0px;
+}
+
 #h1-publications{
     font-size: 30px;
     text-decoration: underline;
