@@ -11,7 +11,11 @@ const userAuth = require('../middlewares/authenticate')
 
 //ROTA DA HOME PAGE
 router.get('/homepage', userAuth, (req, res) =>{
-    publicationModel.findAll()
+    publicationModel.findAll({
+        order: [
+            ['id', 'DESC']
+        ]
+    })
         .then((publicationData) =>{
             if(userAuth){
                 const user = req.session.user
