@@ -28,7 +28,7 @@ html, body{
     justify-content: space-around;
     height: 16vh;
     width: 100%;
-    
+    background-color: aliceblue;
     margin-bottom: 0px;
 }
 
@@ -102,7 +102,9 @@ a:hover{
     align-items: center;
     width: 100%;
     padding: 0px;
-    background-color: rgb(232, 232, 232);
+    background-image: url(./imagens/section-img-4.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
     box-shadow: rgba(0, 0, 0, 0.226) 0px 2px 8px 0px inset;
 }
 
@@ -204,7 +206,9 @@ a:hover{
     align-items: flex-start;
     width: 100%;
     padding: 60px 0px 60px 0px;
-    background-color: rgb(232, 232, 232);
+    background-image: url(./imagens/section-img-4.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
     box-shadow: rgba(0, 0, 0, 0.226) 0px 2px 8px 0px inset;
 }
 

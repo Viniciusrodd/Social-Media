@@ -16,7 +16,10 @@ html, body{
     align-items: center;
     height: 100vh;
     width: 100%;
-    background-color: rgb(232, 232, 232);
+    background-image: url(../paginasBaseCss/imagens/section-img-4.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #div-filho{

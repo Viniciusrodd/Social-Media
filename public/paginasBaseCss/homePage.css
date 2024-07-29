@@ -27,7 +27,7 @@ html, body{
     justify-content: space-around;
     height: 16vh;
     width: 100%;
-    margin-bottom: 0px;
+    background-color: aliceblue;
 }
 
 #div-logo{
@@ -100,7 +100,9 @@ a:hover{
     align-items: flex-start;
     width: 100%;
     padding: 60px 0px 60px 0px;
-    background-color: rgb(232, 232, 232);
+    background-image: url(./imagens/section-img-4.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
     box-shadow: rgba(0, 0, 0, 0.226) 0px 2px 8px 0px inset;
 }
 
@@ -121,6 +123,9 @@ div#shortcuts{
     rgba(240, 46, 170, 0.2) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px,
     rgba(240, 46, 170, 0.05) 0px 25px;
     margin-right: 5px;
+    position: -webkit-sticky; /* Para compatibilidade com navegadores WebKit */
+    position: sticky;
+    top: 10px; /* Ajuste conforme necessário */
 }
 
 #h1-shortcuts{
@@ -274,7 +279,7 @@ div#your-pages{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: center;  
     height: 20vh;
     width: 20%;
     border-radius: 20px;
@@ -283,6 +288,9 @@ div#your-pages{
     rgba(240, 46, 170, 0.2) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px,
     rgba(240, 46, 170, 0.05) 0px 25px;
     margin-right: 5px;
+    position: -webkit-sticky; /* Para compatibilidade com navegadores WebKit */
+    position: sticky;
+    top: 10px; /* Ajuste conforme necessário */
 }
 
 #h1-your-pages{
