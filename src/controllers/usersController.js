@@ -106,21 +106,27 @@ router.post('/authenticate', (req, res) =>{
 
 
 
+//ROTA DE CRIAÇÃO DE PUBLICAÇÃO
 router.post('/publications/postings', (req, res) =>{
     var titleVar = req.body.title
     var publiArea = req.body.publiBody
 
-    publicationModel.create({
-        title: titleVar,
-        body: publiArea
-    })
-    .then(() =>{
-        console.log('Publications data created')
-        res.redirect('/homepage')
-    })
-    .catch((error) =>{
-        console.log(`error to created publications data ${error}`)
-    })
+    if(titleVar && publiArea != undefined){
+        publicationModel.create({
+            title: titleVar,
+            body: publiArea
+        })
+        .then(() =>{
+            console.log('Publications data created')
+            res.redirect('/homepage')
+        })
+        .catch((error) =>{
+            console.log(`error to created publications data ${error}`)
+        })
+    }else{
+        res.redirect('/homepage?error=Preencha todos os campos para fazer publicação.')
+    }
+
 })
 
 
