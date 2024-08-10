@@ -131,6 +131,27 @@ router.post('/publications/postings', (req, res) =>{
 
 
 
+//ROTA DE DELETAR PUBLICAÇÕES
+router.post('/publications/delete', (req, res) =>{
+    var idVar = req.body.id
+
+    if(idVar != undefined){
+        publicationModel.destroy({
+            where: {
+                id: idVar
+            }
+        })
+        .then(() =>{
+            res.redirect('/homepage')
+        })    
+        .catch(() =>{
+            res.redirect('/homepage')
+        })
+    }
+})
+
+
+
 
 /*
 ROTA PRA SALVAR PERFIL

@@ -78,8 +78,11 @@
                             <h1 id="h1-publications"><%= dados.title %></h1>
                             <p id="p-publications"><%- dados.body %></p>
                             <div id="div-buttons">
-                                <button id="editBtt">EDIT</button>
-                                <button id="deleteBtt">DELETE</button>
+                                    <button id="editBtt">EDIT</button>
+                                <form action="/publications/delete" method="post" id="formDelete">
+                                    <input type="hidden" name="id" value="<%= dados.id %>">
+                                    <button id="deleteBtt">DELETE</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -129,6 +132,16 @@
                 history.replaceState(null, '', newUrl);
             }
         })
+
+        var deleteForm = document.querySelectorAll('#formDelete')
+            deleteForm.forEach(form => {
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault(); // Evita que o formulário seja enviado automaticamente
+                    if (confirm('Tem certeza que deseja excluir esta publicação?')) {
+                        this.submit(); // Envia o formulário se o usuário confirmar
+                    }
+                });
+            });
     </script>
 </body>
 </html>
