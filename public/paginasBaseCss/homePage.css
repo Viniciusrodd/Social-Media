@@ -285,10 +285,10 @@ button:hover{
 }
 
 #editBtt{
-    height: 40px;
+    height: 35px;
     width: 80px;
     letter-spacing: 2px;
-    margin: 20px 20px 0px 0px;
+    margin: 20px 10px 0px 0px;
     border: none;
     border-radius: 10px;
     font-weight: bolder;
@@ -304,10 +304,10 @@ button:hover{
 }
 
 #deleteBtt{
-    height: 40px;
+    height: 35px;
     width: 90px;
     letter-spacing: 2px;
-    margin: 20px 20px 0px 0px;
+    margin: 20px 0px 0px 0px;
     border: none;
     border-radius: 10px;
     font-weight: bolder;
