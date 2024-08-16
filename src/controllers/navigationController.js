@@ -64,4 +64,27 @@ router.get('/profile', userAuth, (req, res) =>{
         })
 })
 
+
+
+//VIEW DE EDIT PROFLE
+router.get('/editPubli/:id', (req, res) =>{
+    var idVar = req.params.id
+
+    if(isNaN(idVar)){
+        res.redirect('/paginasBase/homePage')
+    }else{
+        publicationModel.findByPk(idVar)
+            .then((dados) =>{
+                if(dados != undefined){
+                    res.render('userEjs/editPubli',{
+                        dadosPegos: dados
+                    })
+                }else{
+                    res.redirect('/paginasBase/homePage')                    
+                }
+            })
+    }
+
+})
+
 module.exports = router

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edite Profile</title>
+    <link rel="stylesheet" href="../../../userCss/editPubli.css">
 </head>
 <body>
     <div id="div-pai">
@@ -35,6 +36,35 @@
             </div>
         </section>
 
+        <!--FOOTER-->
+        <footer>
+            <p id="p-footer">2024 by Vinicius Rodrigues &copy</p>
+        </footer>
     </div>
+
+
+    <script src="/tinymce/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+            language: 'pt_BR',
+            selector: '#publication-area', 
+            plugins:[
+                'advlist',
+                'autolink',
+                'link',
+                'image',
+                'lists',
+                'preview',
+                'searchreplace',
+                'wordcount',
+                'fullscreen',
+                'insertdatetime',
+                'media',
+                'save',
+                'table',
+                'emoticons'
+            ],
+        })
+    </script>
 </body>
 </html>
