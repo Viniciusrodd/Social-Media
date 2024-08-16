@@ -78,7 +78,9 @@
                             <h1 id="h1-publications"><%= dados.title %></h1>
                             <p id="p-publications"><%- dados.body %></p>
                             <div id="div-buttons">
+                                <a href="/editPubli">
                                     <button id="editBtt">EDIT</button>
+                                </a>
                                 <form action="/publications/delete" method="post" id="formDelete">
                                     <input type="hidden" name="id" value="<%= dados.id %>">
                                     <button id="deleteBtt">DELETE</button>
