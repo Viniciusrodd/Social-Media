@@ -153,7 +153,27 @@ router.post('/publications/delete', (req, res) =>{
 
 
 //ROTA DE EDIÇÃO DE PUBLICAÇÕES
+router.post('/editprofile', (req, res) =>{
+    var idVar = req.body.id;
+    var titleVar = req.body.title
+    var bodyPubli = req.body.publiBody
 
+    publicationModel.update({
+        title: titleVar,
+        body: bodyPubli
+    }, {
+        where: {
+            id: idVar
+        }
+    })
+    .then(() =>{
+        res.redirect('/homepage')
+    })
+    .catch((error) =>{
+        console.log(`Update profile filed ${error}`)
+    })
+
+})
 
 
 

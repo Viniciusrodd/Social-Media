@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edite Profile</title>
     <link rel="stylesheet" href="../../../userCss/editPubli.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <div id="div-pai">
         <nav id="navBar">
-            <div id="div-logo">
-        
-            </div>
+            <a href="/homePage">
+                <div id="div-logo">
+                </div>
+            </a>
             <div id="div-links">
                 <p id="p-links"><a href="#">Pages</a></p>
                 <p id="p-links"><a href="#">Groups</a></p>
@@ -25,13 +27,15 @@
 
         <section id="section-container">            
             <div id="publications">
-                <form action="/publications/postings" method="post">
+                <h1 id="h1-publi">EDIT YOUR PUBLICATION</h1>
+                <form action="/editprofile" method="post">
+                    <input type="hidden" name="id" value="<%= idPego %>">
                     <input type="text" name="title" id="ititle" placeholder="Your Title here">
-                    
+
                     <textarea id="publication-area" name="publiBody" placeholder="Your publication here">
 
                     </textarea>
-                    <button>Publish</button>
+                    <button id="btt-edit">EDIT</button>
                 </form>
             </div>
         </section>

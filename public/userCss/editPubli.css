@@ -109,6 +109,12 @@ a:hover{
 
 /*PUBLICATIONS*/
 
+#h1-publi{
+    font-size: 30px;
+    color: rgba(163, 20, 111, 0.981);
+    text-decoration: overline;
+    letter-spacing: 1px;
+}
 
 div#publications{
     display: flex;
@@ -158,7 +164,7 @@ input::placeholder{
     color: rgba(0, 0, 0, 0.252);
 }
 
-button{
+button#btt-edit{
     height: 40px;
     width: 120px;
     margin-top: 20px;
@@ -170,8 +176,9 @@ button{
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     transition: transform 0.5s ease;
     cursor: pointer;
+    letter-spacing: 2px;
 }
-button:hover{
+button#btt-edit:hover{
     transform: scale(1.08);
 }
 

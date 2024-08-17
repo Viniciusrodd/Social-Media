@@ -67,7 +67,7 @@ router.get('/profile', userAuth, (req, res) =>{
 
 
 //VIEW DE EDIT PROFLE
-router.get('/editPubli/:id', (req, res) =>{
+router.get('/editPubli/:id', userAuth, (req, res) =>{
     var idVar = req.params.id
 
     if(isNaN(idVar)){
@@ -77,7 +77,8 @@ router.get('/editPubli/:id', (req, res) =>{
             .then((dados) =>{
                 if(dados != undefined){
                     res.render('userEjs/editPubli',{
-                        dadosPegos: dados
+                        dadosPegos: dados,
+                        idPego: idVar
                     })
                 }else{
                     res.redirect('/paginasBase/homePage')                    
