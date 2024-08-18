@@ -92,7 +92,8 @@ router.post('/authenticate', (req, res) =>{
                 //criando sessão
                 req.session.user = {
                     id: dadosLogin.id,
-                    email: dadosLogin.email
+                    email: dadosLogin.email,
+                    userName: dadosLogin.userName
                 }
                 res.redirect('/homepage')
             }else{
@@ -151,7 +152,7 @@ router.post('/publications/delete', (req, res) =>{
 })
 
 
-
+    
 //ROTA DE EDIÇÃO DE PUBLICAÇÕES
 router.post('/editprofile', (req, res) =>{
     var idVar = req.body.id;

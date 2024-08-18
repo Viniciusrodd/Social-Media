@@ -10,6 +10,12 @@ const userAuth = require('./src/middlewares/authenticate')
 
 
 
+//IMPORTANDO RELAÇÃO ENTRE TABELAS
+const defineRelation = require('./src/relations/relation')
+defineRelation()
+
+
+
 //IMPORTANDO CONEXÃO
 const connection = require('./src/connection/connection')
 
@@ -43,6 +49,22 @@ function destroyData() {
         console.log('error in delete datas')
     })
 }
+
+
+
+//LÓGICA DE EXCLUSÃO DE DADOS DA TABELA PUBLICATION PARA TESTES
+function destroyDataPublis() {
+    publicationModel.destroy({
+        where: {}
+    })
+    .then(() =>{
+        console.log('deleted datas')
+    })
+    .catch((error) =>{
+        console.log('error in delete datas')
+    })
+}
+
 
 
 

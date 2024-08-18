@@ -27,7 +27,7 @@ router.get('/homepage', userAuth, (req, res) =>{
                 .then((recordData) =>{
                     res.render('paginasBase/homePage',{
                         dadosPublications: publicationData,
-                        user,
+                        userData: user,
                         dadosRecord: recordData
                     })
                 })
