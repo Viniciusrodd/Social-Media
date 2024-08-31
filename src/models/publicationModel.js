@@ -3,10 +3,6 @@ const sequelize = require('sequelize')
 const connection = require('../connection/connection')
 
 const publication = connection.define('publication', {
-    UserName: {
-        type: sequelize.STRING,
-        allownull: false
-    },
     title: {
         type: sequelize.STRING,
         allownull: false

@@ -9,13 +9,6 @@ const session = require('express-session')
 const userAuth = require('./src/middlewares/authenticate')
 
 
-
-//IMPORTANDO RELAÇÃO ENTRE TABELAS
-const defineRelation = require('./src/relations/relation')
-defineRelation()
-
-
-
 //IMPORTANDO CONEXÃO
 const connection = require('./src/connection/connection')
 
