@@ -9,20 +9,18 @@
 </head>
 <body>
     <div id="div-pai">
-            <nav id="navBar">
-                <div id="div-logo">
-            
+        <nav id="navBar">
+            <div id="div-logo">
+        
+            </div>
+            <div id="div-links">
+                <p id="p-links"><a href="/profile">Profile</a></p>
+                <p id="p-links"><a href="/logout">Logout</a></p>
+                <div id="div-pesquisa">
+                    <i class="material-icons">search</i>
                 </div>
-                <div id="div-links">
-                    <p id="p-links"><a href="#">Pages</a></p>
-                    <p id="p-links"><a href="#">Groups</a></p>
-                    <p id="p-links"><a href="/profile">Profile</a></p>
-                    <p id="p-links"><a href="/logout">Logout</a></p>
-                    <div id="div-pesquisa">
-                        <i class="material-icons">search</i>
-                    </div>
-                </div>
-            </nav>
+            </div>
+        </nav>
         
 
         <!--SHORTCUTS-->
@@ -126,6 +124,8 @@
                 'emoticons'
             ],
         })
+
+        window.alert('This is a social media for postings your stuffs and see whats happens')
 
         document.addEventListener('DOMContentLoaded', (event) =>{
             const urlParams = new URLSearchParams(window.location.search)
