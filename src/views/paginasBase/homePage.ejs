@@ -28,7 +28,7 @@
         <!--SHORTCUTS-->
         <section id="section-container">
             <div id="shortcuts">
-                <h1 id="h1-shortcuts">SHORTCUTS</h1>
+                <h1 class="h1-shortcuts">SHORTCUTS</h1>
                 <ul style="list-style-type: none;">
                     <li><i class="material-icons">person</i>
                         Friends
@@ -50,47 +50,51 @@
 
 
             <!--PUBLICATIONS-->
-            <div id="publications">
+            <div id="publications-container">
+                <div id="publishing">
+                    <h1 class="h1-shortcuts">PUBLISH HERE</h1>
 
-                <div id="perfil-image">
-                    
+                    <div id="perfil-image">
+                
+                    </div>
+                    <form action="/publications/postings" method="post">
+                        <input type="text" name="title" id="ititle" placeholder="Your Title here">
+                
+                        <textarea id="publication-area" name="publiBody" placeholder="Your publication here">
+                        </textarea>
+                        <button>Publish</button>
+                    </form>
                 </div>
-                <form action="/publications/postings" method="post">
-                    <input type="text" name="title" id="ititle" placeholder="Your Title here">
-                    
-                    <textarea id="publication-area" name="publiBody" placeholder="Your publication here">
+                <div id="publications">
+                    <h1 class="h1-shortcuts">PUBLICATIONS</h1>
 
-                    </textarea>
-                    <button>Publish</button>
-                </form>
-
-                <% dadosPublications.forEach((dados) =>{ %>
-                    <div id="publications-postings-container">
-                        <div id="perfil-image-publications">
-                        
-                        </div>
-
-                        <div id="publications-postings">
-                            <h2 id="h2-publications">
-                                <%= dados.id %> - 
-                                Posted by: <ins><%= userData.userName %></ins>
-                            </h2>
-                            <h1 id="h1-publications"><%= dados.title %></h1>
-                            <p id="p-publications"><%- dados.body %></p>
-                            <div id="div-buttons">
-                                <a href="/editPubli/<%= dados.id %>">
-                                    <button id="editBtt">EDIT</button>
-                                </a>
-                                <form action="/publications/delete" method="post" id="formDelete">
-                                    <input type="hidden" name="id" value="<%= dados.id %>">
-                                    <button id="deleteBtt">DELETE</button>
-                                </form>
+                    <% dadosPublications.forEach((dados) =>{ %>
+                        <div id="publications-postings-container">
+                            <div id="perfil-image-publications">
+                
+                            </div>
+                            <div id="publications-postings">
+                                <h2 id="h2-publications">
+                                    <%= dados.id %> -
+                                    Posted by: <ins><%= userData.userName %></ins>
+                                </h2>
+                                <h1 id="h1-publications"><%= dados.title %></h1>
+                                <p id="p-publications"><%- dados.body %></p>
+                                <div id="div-buttons">
+                                    <a href="/editPubli/<%= dados.id %>">
+                                        <button id="editBtt">EDIT</button>
+                                    </a>
+                                    <form action="/publications/delete" method="post" id="formDelete">
+                                        <input type="hidden" name="id" value="<%= dados.id %>">
+                                        <button id="deleteBtt">DELETE</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                <% }) %>
+                    <% }) %>
+                </div>
             </div>
-            
+
         </section>
 
 
