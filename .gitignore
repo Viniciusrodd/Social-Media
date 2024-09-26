@@ -1,8 +1,12 @@
 
 
-#pastas para ignorar
-connection/
+# Ignorar pastas dentro de src/
+src/connection/
+src/models/
+src/middlewares/
+
+# Ignorar node_modules na raiz
 node_modules/
 
-#arquivos para ignorar
+# Ignorar arquivo específico
 server.js
