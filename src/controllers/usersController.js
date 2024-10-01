@@ -23,16 +23,23 @@ router.post('/savingRecords', (req, res) =>{
     var userNameVar = req.body.username
     var emailVar = req.body.email
     var passwordVar = req.body.password
-    var maleVar = req.body.male
-    var femaleVar = req.body.female
+    var maleVar = req.body.radio
+    var femaleVar = req.body.radio
+
+    var campos = {
+        nameVar,
+        userNameVar,
+        emailVar,
+        passwordVar,
+        maleVar,
+        femaleVar,
+    }
 
     //VERIFICAÇÕES:
-    if(!nameVar || !userNameVar || !emailVar || !passwordVar){
-        res.redirect('userEjs/record')
+    if(!campos){
+        res.redirect('/cadastro?error=Insira os campos corretamente.')
     }
-    if(!maleVar && !femaleVar){
-        res.redirect('userEjs/record')
-    }
+    
     //VERIFICAÇÃO DE EXISTENCIA DE EMAIL E GERAÇÃO DE HASH
     recordModel.findOne({
         where: {
@@ -97,10 +104,10 @@ router.post('/authenticate', (req, res) =>{
                 }
                 res.redirect('/homepage')
             }else{
-                res.redirect('/login?error=Email inválido.')
+                res.redirect('/login?error=Preencha os dados corretamente.')
             }
         }else{
-            res.redirect('/login?error=Email inválido.')
+            res.redirect('/login?error=Preencha os dados corretamente.')
         }
     })
 })

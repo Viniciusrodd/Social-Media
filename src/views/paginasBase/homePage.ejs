@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página principal</title>
+    <title>Blog Homepage</title>
     <link rel="stylesheet" href="/paginasBaseCss/homePage.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="shortcut icon" href="/paginasBaseCss/imagens/fivecon.png" type="image/x-icon">
+    <link rel="stylesheet" href="sweetalert2.min.css">
 </head>
 <body>
     <div id="div-pai">
@@ -72,10 +74,6 @@
                 
                             </div>
                             <div id="publications-postings">
-                                <h2 id="h2-publications">
-                                    <%= dados.id %> -
-                                    Posted by: <ins><%= userData.userName %></ins>
-                                </h2>
                                 <h1 id="h1-publications"><%= dados.title %></h1>
                                 <p id="p-publications"><%- dados.body %></p>
                                 <div id="div-buttons">
@@ -103,6 +101,7 @@
     </div>
 
     <script src="/tinymce/tinymce.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         tinymce.init({
             language: 'pt_BR',
@@ -125,7 +124,12 @@
             ],
         })
 
-        window.alert('This is a social media for postings your stuffs and see whats happens')
+        Swal.fire({
+            title: 'Hello partner!',
+            text: `This is like a "blog" for postings your stuffs and see whats happens`,
+            icon: 'info',
+            confirmButtonText: 'Cool'
+        })
 
         document.addEventListener('DOMContentLoaded', (event) =>{
             const urlParams = new URLSearchParams(window.location.search)
@@ -143,9 +147,20 @@
             deleteForm.forEach(form => {
                 form.addEventListener('submit', function(event) {
                     event.preventDefault(); // Evita que o formulário seja enviado automaticamente
-                    if (confirm('Tem certeza que deseja excluir esta publicação?')) {
-                        this.submit(); // Envia o formulário se o usuário confirmar
-                    }
+                    
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: 'You will not be able to undo this action!',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Yes, delete!',
+                        cancelButtonText: 'Cancel'
+                    })
+                    .then((result) =>{
+                        if(result.isConfirmed){
+                            this.submit(); 
+                        }
+                    })
                 });
             });
     </script>

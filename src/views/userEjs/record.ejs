@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
     <link rel="stylesheet" href="/userCss/record.css">
+    <link rel="shortcut icon" href="/paginasBaseCss/imagens/fivecon.png" type="image/x-icon">
+    <link rel="stylesheet" href="sweetalert2.min.css">
 </head>
 <body>
 
@@ -12,15 +14,15 @@
         <div id="div-filho">
             <h2>SignUp</h2>
             <form method="post" action="/savingRecords">
-                <input type="text" name="name" id="inome" placeholder="Full Name">
-                <input type="text" name="username" id="iusername" placeholder="User Name">
-                <input type="text" name="email" id="iemail" placeholder="Email">
-                <input type="password" name="password" id="ipassword" placeholder="Password">
+                <input type="text" name="name" id="inome" placeholder="Full Name" required>
+                <input type="text" name="username" id="iusername" placeholder="User Name" required>
+                <input type="text" name="email" id="iemail" placeholder="Email" required>
+                <input type="password" name="password" id="ipassword" placeholder="Password" required>
 
                 <div id="input-radio">
-                    <input type="radio" name="male" id="imale" class="radio">
+                    <input type="radio" name="radio" id="imale" class="radio" required>
                     <label for="imale">Male</label>
-                    <input type="radio" name="female" id="ifemale" class="radio">
+                    <input type="radio" name="radio" id="ifemale" class="radio" required>
                     <label for="ifemale">Female</label>
                 </div>
 
@@ -33,16 +35,25 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         document.addEventListener('DOMContentLoaded', (event) =>{
             const urlParams = new URLSearchParams(window.location.search)
             const errorMsg = urlParams.get('error')
             if(errorMsg){
-                alert(errorMsg)
-                // Remove o parâmetro 'error' da URL
-                urlParams.delete('error');
-                const newUrl = window.location.pathname + '?' + urlParams.toString();
-                history.replaceState(null, '', newUrl);
+
+                Swal.fire({
+                    title: 'Oops!',
+                    text: errorMsg,
+                    icon: 'warning',
+                    confirmButtonText: 'Go back'
+                })
+                .then(() =>{
+                    // Remove o parâmetro 'error' da URL
+                    urlParams.delete('error');
+                    const newUrl = window.location.pathname + '?' + urlParams.toString();
+                    history.replaceState(null, '', newUrl);
+                })
             }
         })
     </script>

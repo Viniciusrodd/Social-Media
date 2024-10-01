@@ -341,3 +341,8 @@ button:hover{
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.378);
     outline: none;
 }
+
+.swal2-confirm {
+    width: auto !important;
+    padding: 10px 20px !important;
+}

@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
+    <link rel="stylesheet" href="sweetalert2.min.css">
     <link rel="stylesheet" href="/paginasBaseCss/profile.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="shortcut icon" href="/paginasBaseCss/imagens/fivecon.png" type="image/x-icon">
 </head>
 <body>
     <div id="div-pai">
@@ -80,7 +82,16 @@
         </section>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
+        Swal.fire({
+            title: 'Hello partner!',
+            text: `This "Profile page" isn't work yet!`,
+            icon: 'warning',
+            confirmButtonText: 'Cool',
+        })
+
+
         document.getElementById('edit-imagem-perfil').addEventListener('click', function() {
             document.getElementById('input-file').click();
         });

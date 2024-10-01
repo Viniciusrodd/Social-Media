@@ -128,3 +128,8 @@ button:hover{
     outline: none;
     transform: scale(1.08);
 }
+
+.swal2-confirm {
+    width: auto !important;
+    padding: 10px 20px !important;
+}
