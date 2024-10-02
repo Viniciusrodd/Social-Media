@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../../../userCss/editPubli.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="shortcut icon" href="/paginasBaseCss/imagens/fivecon.png" type="image/x-icon">
+    <link rel="stylesheet" href="sweetalert2.min.css">
 </head>
 <body>
     <div id="div-pai">
@@ -16,8 +17,6 @@
                 </div>
             </a>
             <div id="div-links">
-                <p id="p-links"><a href="#">Pages</a></p>
-                <p id="p-links"><a href="#">Groups</a></p>
                 <p id="p-links"><a href="/profile">Profile</a></p>
                 <p id="p-links"><a href="/logout">Logout</a></p>
                 <div id="div-pesquisa">
@@ -33,7 +32,7 @@
                     <input type="hidden" name="id" value="<%= idPego %>">
                     <input type="text" name="title" id="ititle" placeholder="Your Title here">
 
-                    <textarea id="publication-area" name="publiBody" placeholder="Your publication here">
+                    <textarea id="publication-area" name="publiBody" placeholder="Your publication here" required>
 
                     </textarea>
                     <button id="btt-edit">EDIT</button>
@@ -49,6 +48,7 @@
 
 
     <script src="/tinymce/tinymce.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         tinymce.init({
             language: 'pt_BR',
@@ -70,6 +70,28 @@
                 'emoticons'
             ],
         })
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const errorMsg = urlParams.get('error');
+        
+            if (errorMsg) {
+                Swal.fire({
+                    title: 'Oops!',
+                    text: errorMsg,
+                    icon: 'warning',
+                    confirmButtonText: 'Go back'
+                }).then(() => {
+                    // Depois que o usuário clicar em "Ok", remove o parâmetro da URL
+                    urlParams.delete('error');
+                    
+                    const newUrl = window.location.pathname + (urlParams.toString() ? '?' + urlParams.toString() : '');
+                    
+                    // Atualiza o histórico para remover o parâmetro 'error' da URL
+                    history.replaceState(null, '', newUrl);
+                });
+            }
+        });
     </script>
 </body>
 </html>

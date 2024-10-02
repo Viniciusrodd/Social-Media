@@ -131,18 +131,29 @@
             confirmButtonText: 'Cool'
         })
 
-        document.addEventListener('DOMContentLoaded', (event) =>{
-            const urlParams = new URLSearchParams(window.location.search)
-            const errorMsg = urlParams.get('error')
-            if(errorMsg){
-                alert(errorMsg)
-                // Remove o parâmetro 'error' da URL
-                urlParams.delete('error');
-                const newUrl = window.location.pathname + '?' + urlParams.toString();
-                history.replaceState(null, '', newUrl);
+        document.addEventListener('DOMContentLoaded', (event) => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const errorMsg = urlParams.get('error');
+        
+            if (errorMsg) {
+                Swal.fire({
+                    title: 'Oops!',
+                    text: errorMsg,
+                    icon: 'warning',
+                    confirmButtonText: 'Go back'
+                }).then(() => {
+                    // Depois que o usuário clicar em "Ok", remove o parâmetro da URL
+                    urlParams.delete('error');
+                    
+                    const newUrl = window.location.pathname + (urlParams.toString() ? '?' + urlParams.toString() : '');
+                    
+                    // Atualiza o histórico para remover o parâmetro 'error' da URL
+                    history.replaceState(null, '', newUrl);
+                });
             }
-        })
+        });
 
+        
         var deleteForm = document.querySelectorAll('#formDelete')
             deleteForm.forEach(form => {
                 form.addEventListener('submit', function(event) {

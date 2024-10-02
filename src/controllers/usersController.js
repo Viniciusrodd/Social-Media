@@ -23,21 +23,11 @@ router.post('/savingRecords', (req, res) =>{
     var userNameVar = req.body.username
     var emailVar = req.body.email
     var passwordVar = req.body.password
-    var maleVar = req.body.radio
-    var femaleVar = req.body.radio
-
-    var campos = {
-        nameVar,
-        userNameVar,
-        emailVar,
-        passwordVar,
-        maleVar,
-        femaleVar,
-    }
+    var genderVar = req.body.radio
 
     //VERIFICAÇÕES:
-    if(!campos){
-        res.redirect('/cadastro?error=Insira os campos corretamente.')
+    if(!nameVar || !userNameVar || !emailVar || !passwordVar || !genderVar){
+        return res.redirect('/cadastro?error=Insira os campos corretamente.')
     }
     
     //VERIFICAÇÃO DE EXISTENCIA DE EMAIL E GERAÇÃO DE HASH
@@ -67,7 +57,7 @@ router.post('/savingRecords', (req, res) =>{
         }else{
             //gerando msg de aviso sobre email já existente no front com queryparams
             //queryparams(não é recomendável por segurança)
-            res.redirect('/cadastro?error=Email já está em uso, tente outro.')
+            return res.redirect('/cadastro?error=Email já está em uso, tente outro.')
         }
     })
 })
@@ -119,7 +109,9 @@ router.post('/publications/postings', (req, res) =>{
     var titleVar = req.body.title
     var publiArea = req.body.publiBody
 
-    if(titleVar && publiArea != undefined){
+    if(!titleVar || !publiArea){
+        res.redirect('/homepage?error=Preencha todos os campos.')
+    }else{
         publicationModel.create({
             title: titleVar,
             body: publiArea
@@ -131,8 +123,6 @@ router.post('/publications/postings', (req, res) =>{
         .catch((error) =>{
             console.log(`error to created publications data ${error}`)
         })
-    }else{
-        res.redirect('/homepage?error=Preencha todos os campos para fazer publicação.')
     }
 
 })
@@ -166,21 +156,24 @@ router.post('/editprofile', (req, res) =>{
     var titleVar = req.body.title
     var bodyPubli = req.body.publiBody
 
-    publicationModel.update({
-        title: titleVar,
-        body: bodyPubli
-    }, {
-        where: {
-            id: idVar
-        }
-    })
-    .then(() =>{
-        res.redirect('/homepage')
-    })
-    .catch((error) =>{
-        console.log(`Update profile filed ${error}`)
-    })
-
+    if(!titleVar || !bodyPubli){
+        res.redirect(`/editPubli/${idVar}?error=Preencha todos os campos.`)
+    }else{
+        publicationModel.update({
+            title: titleVar,
+            body: bodyPubli
+        }, {
+            where: {
+                id: idVar
+            }
+        })
+        .then(() =>{
+            res.redirect('/homepage')
+        })
+        .catch((error) =>{
+            console.log(`Update profile filed ${error}`)
+        })    
+    }
 })
 
 
