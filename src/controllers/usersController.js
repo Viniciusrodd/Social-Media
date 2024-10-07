@@ -112,19 +112,23 @@ router.post('/publications/postings', (req, res) =>{
     if(!titleVar || !publiArea){
         res.redirect('/homepage?error=Preencha todos os campos.')
     }else{
-        publicationModel.create({
-            title: titleVar,
-            body: publiArea
-        })
-        .then(() =>{
-            console.log('Publications data created')
-            res.redirect('/homepage')
-        })
-        .catch((error) =>{
-            console.log(`error to created publications data ${error}`)
-        })
+        if(req.session.user){
+            publicationModel.create({
+                title: titleVar,
+                body: publiArea,
+                userId: req.session.user.id  // Usa o id do usuário logado
+            })
+            .then(() =>{
+                console.log('Publications data created')
+                res.redirect('/homepage')
+            })
+            .catch((error) =>{
+                console.log(`error to created publications data ${error}`)
+            })
+        }else{
+            return res.redirect('/homepage')
+        }
     }
-
 })
 
 
