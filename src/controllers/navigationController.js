@@ -51,16 +51,23 @@ router.get('/logout', (req, res) =>{
 
 //ROTA DE PROFILE
 router.get('/profile', userAuth, (req, res) =>{
-    
-    recordModel.findByPk(1)
-        .then((dadosPegos) =>{
-            res.render('paginasBase/profile', {
-                dadosRecord: dadosPegos
-            })
+    const user = req.session.user.userName;
+
+    publicationModel.findAll({
+        order: [
+            ['id', 'DESC']
+        ],
+        where: {
+            userId: req.session.user.id
+        }
+    })
+    .then((publicationData) =>{
+        res.render('paginasBase/profile', {
+            dadosRecord: user,
+            dadosPublications: publicationData
         })
-        .catch((error) =>{
-            console.log(error)
-        })
+    })
+        
 })
 
 

@@ -38,7 +38,7 @@
             </div>
 
             <div id="div-nome">
-                <p id="p-nome"><%= dadosRecord.fullName %></p>
+                <p id="p-nome"><%= dadosRecord %></p>
             </div>
         </section>
 
@@ -64,20 +64,30 @@
                 </ul>
             </div>
 
-            <div id="div-uptade-profile">
-                <h1 id="h1-profile">Update Profile</h1>
-
-                <form action="/savingProfile" method="post">
-                    <input type="date" name="date" id="idate" placeholder="">
-                    <input type="text" name="city" id="icity" placeholder="City">
-                    <input type="text" name="country" id="icountry" placeholder="Country">
-                    <label for="about">About Me</label>
-                    <textarea name="about" id="iabout">
-
-                    </textarea>
-
-                    <button>Save</button>
-                </form>
+            <div id="publications-container">
+                <div id="publications">
+                    <h1 class="h1-shortcuts">YOUR PUBLICATIONS</h1>
+                    <% dadosPublications.forEach((dados) =>{ %>
+                        <div id="publications-postings-container">
+                            <div id="perfil-image-publications">
+                
+                            </div>
+                            <div id="publications-postings">
+                                <h1 id="h1-publications"><%= dados.title %></h1>
+                                <p id="p-publications"><%- dados.body %></p>
+                                <div id="div-buttons">
+                                    <a href="/editPubli/<%= dados.id %>">
+                                        <button id="editBtt">EDIT</button>
+                                    </a>
+                                    <form action="/publications/delete" method="post" id="formDelete">
+                                        <input type="hidden" name="id" value="<%= dados.id %>">
+                                        <button id="deleteBtt">DELETE</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
             </div>
         </section>
     </div>
@@ -96,6 +106,7 @@
             document.getElementById('input-file').click();
         });
 
+        
         document.getElementById('input-file').addEventListener('change', function(event) {
             const file = event.target.files[0];
             if (file) {
@@ -112,6 +123,28 @@
                 reader.readAsDataURL(file);
             }
         });
+
+
+        var deleteForm = document.querySelectorAll('#formDelete')
+            deleteForm.forEach(form => {
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault(); // Evita que o formulário seja enviado automaticamente
+                    
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: 'You will not be able to undo this action!',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Yes, delete!',
+                        cancelButtonText: 'Cancel'
+                    })
+                    .then((result) =>{
+                        if(result.isConfirmed){
+                            this.submit(); 
+                        }
+                    })
+                });
+            });
     </script>
 </body>
 </html>

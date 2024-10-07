@@ -296,8 +296,9 @@ button:hover{
 }
 
 #p-publications{
-    font-size: 22px;
-    margin: 0px;
+    font-size: 20px;
+    margin: 0px 0px 10px 0px;
+    color: rgba(163, 20, 111, 0.981);
 }
 
 #div-buttons{

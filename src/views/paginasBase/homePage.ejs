@@ -73,22 +73,13 @@
                             <div id="perfil-image-publications">
                 
                             </div>
-                            <p>
-                                Publicado por: <%= dados.record.fullName %> 
+                            <p id="p-publications">
+                                Publicado por: <ins><%= dados.record.fullName %></ins> 
                                 (@<%= dados.record.userName %>)
                             </p>
                             <div id="publications-postings">
                                 <h1 id="h1-publications"><%= dados.title %></h1>
                                 <p id="p-publications"><%- dados.body %></p>
-                                <div id="div-buttons">
-                                    <a href="/editPubli/<%= dados.id %>">
-                                        <button id="editBtt">EDIT</button>
-                                    </a>
-                                    <form action="/publications/delete" method="post" id="formDelete">
-                                        <input type="hidden" name="id" value="<%= dados.id %>">
-                                        <button id="deleteBtt">DELETE</button>
-                                    </form>
-                                </div>
                             </div>
                         </div>
                     <% }) %>
@@ -156,28 +147,6 @@
                 });
             }
         });
-
-        
-        var deleteForm = document.querySelectorAll('#formDelete')
-            deleteForm.forEach(form => {
-                form.addEventListener('submit', function(event) {
-                    event.preventDefault(); // Evita que o formulário seja enviado automaticamente
-                    
-                    Swal.fire({
-                        title: 'Are you sure?',
-                        text: 'You will not be able to undo this action!',
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonText: 'Yes, delete!',
-                        cancelButtonText: 'Cancel'
-                    })
-                    .then((result) =>{
-                        if(result.isConfirmed){
-                            this.submit(); 
-                        }
-                    })
-                });
-            });
     </script>
 </body>
 </html>

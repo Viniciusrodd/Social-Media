@@ -346,3 +346,199 @@ button:hover{
     width: auto !important;
     padding: 10px 20px !important;
 }
+
+/*PUBLICATIONS*/
+
+div#publications-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 60%;
+}
+
+div#publishing{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 60px;
+    width: 90%;
+    border-radius: 20px;
+    background-color: rgb(250, 250, 250);
+    box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, 
+    rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, 
+    rgba(240, 46, 170, 0.05) -25px 25px;
+    margin-bottom: 50px;
+}
+
+#perfil-image{
+    height: 90px;
+    width: 90px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    background-image: url(./imagens/user.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+
+div#publications{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 60px;
+    width: 90%;
+    border-radius: 20px;
+    background-color: rgb(250, 250, 250);
+    box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, 
+    rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, 
+    rgba(240, 46, 170, 0.05) -25px 25px;
+    margin-right: 5px;
+}
+
+input{
+    height: 50px;
+    width: 95%;
+    border: none;
+    font-size: 17px;
+    margin: 0px 0px 10px 10px;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+    background-color: rgba(255, 255, 255, 0);
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+input:focus {
+    outline: none; 
+}
+
+input::placeholder{
+    text-align: center;
+    letter-spacing: 1px;
+    color: rgba(0, 0, 0, 0.252);
+}
+
+button{
+    height: 40px;
+    width: 120px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: white;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    transition: transform 0.5s ease;
+    cursor: pointer;
+}
+button:hover{
+    transform: scale(1.08);
+}
+
+#publications-postings-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 40px;
+    width: 80%;
+    padding: 40px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, 
+    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+#perfil-image-publications{
+    height: 90px;
+    width: 90px;
+    margin-bottom: 40px;
+    border-radius: 50%;
+    background-image: url(./imagens/user.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+#publications-postings{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+    width: 80%;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+}
+
+#h2-publications{
+    font-size: 19px;
+    margin: 0px 0px 40px 0px;
+}
+
+#h1-publications{
+    font-size: 30px;
+    text-decoration: underline;
+    margin: 0px;
+}
+
+#p-publications{
+    font-size: 20px;
+    margin: 0px 0px 10px 0px;
+    color: rgba(163, 20, 111, 0.981);
+}
+
+#div-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding: 10px 0px 10px 0px;
+    width: 100%;
+}
+
+#editBtt{
+    height: 35px;
+    width: 80px;
+    letter-spacing: 2px;
+    margin: 20px 10px 0px 0px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bolder;
+    font-size: 16px;
+    background-color: rgba(3, 102, 214, 0.3);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, 
+    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    transition: transform 0.5s ease;
+    cursor: pointer;
+}
+#edit:hover{
+    transform: scale(1.08);
+}
+
+#formDelete{
+    width: 90px;
+}
+
+#deleteBtt{
+    height: 35px;
+    width: 90px;
+    letter-spacing: 2px;
+    margin: 20px 0px 0px 0px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bolder;
+    font-size: 16px;
+    background-color: rgba(255, 68, 0, 0.615);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, 
+    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    transition: transform 0.5s ease;
+    cursor: pointer;
+}
+#deleteBtt:hover{
+    transform: scale(1.08);
+}
