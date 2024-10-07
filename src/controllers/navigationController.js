@@ -14,30 +14,29 @@ router.get('/homepage', userAuth, (req, res) =>{
     publicationModel.findAll({
         order: [
             ['id', 'DESC']
+        ],
+        include: [
+            {
+                model: recordModel,
+                attributes: ['fullName', 'userName']
+            }
         ]
     })
-        .then((publicationData) =>{
-            if(userAuth){
-                const user = req.session.user
-                recordModel.findOne({
-                    where: {
-                        id: user.id
-                    }
-                })
-                .then((recordData) =>{
-                    res.render('paginasBase/homePage',{
-                        dadosPublications: publicationData,
-                        userData: user,
-                        dadosRecord: recordData
-                    })
-                })
-            }else{
-                res.redirect('/login?error=Preciso fazer login para acessar.')
-            }  
-        })
-        .catch((error) =>{
-            console.log(`error in get publications data`)
-        })
+    .then((publicationData) =>{
+        if(req.session.user){
+            const user = req.session.user
+            res.render('paginasBase/homePage',{
+                dadosPublications: publicationData,
+                userData: user
+            })
+        }else{
+            res.redirect('/login?error=Preciso fazer login para acessar.')
+        }  
+    })
+    .catch((error) =>{
+        console.log(`error in get publications data`)
+        res.redirect('/homepage?error=Erro ao carregar publicações.');
+    })
 })
 
 
