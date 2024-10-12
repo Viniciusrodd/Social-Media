@@ -102,16 +102,16 @@
         })
 
 
-        document.getElementById('edit-imagem-perfil').addEventListener('click', function() {
+        document.getElementById('edit-imagem-perfil').addEventListener('click', () => {
             document.getElementById('input-file').click();
         });
 
         
-        document.getElementById('input-file').addEventListener('change', function(event) {
+        document.getElementById('input-file').addEventListener('change', (event) => {
             const file = event.target.files[0];
             if (file) {
                 const reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = (e) => {
                     const img = document.createElement('img');
                     img.src = e.target.result;
                     img.classList.add('div-imagem-perfil')
