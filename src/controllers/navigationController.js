@@ -51,22 +51,33 @@ router.get('/logout', (req, res) =>{
 
 //ROTA DE PROFILE
 router.get('/profile', userAuth, (req, res) =>{
-    const user = req.session.user.userName;
+    const user = req.session.user;
 
+    // Buscar as publicações do usuário
     publicationModel.findAll({
-        order: [
-            ['id', 'DESC']
-        ],
-        where: {
-            userId: req.session.user.id
-        }
+        order: [['id', 'DESC']],
+        where: { userId: req.session.user.id }
     })
-    .then((publicationData) =>{
-        res.render('paginasBase/profile', {
-            dadosRecord: user,
-            dadosPublications: publicationData
+    .then((publicationData) => {
+        // Buscar dados do usuário, incluindo o campo da imagem
+        recordModel.findOne({
+            where: { id: user.id }  // Usando o id do usuário logado
         })
+        .then((userData) => {
+            res.render('paginasBase/profile', {
+                dadosRecord: userData,  // Inclui os dados completos do usuário, inclusive a imagem
+                dadosPublications: publicationData
+            });
+        })
+        .catch((error) => {
+            console.error(`Erro ao buscar dados do usuário: ${error}`);
+            res.redirect('/errorPage');
+        });
     })
+    .catch((error) => {
+        console.error(`Erro ao buscar publicações: ${error}`);
+        res.redirect('/errorPage');
+    });
         
 })
 

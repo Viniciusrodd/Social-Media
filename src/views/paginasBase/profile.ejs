@@ -28,17 +28,25 @@
             <div id="div-imagem-capa">
                 
                 <div id="div-imagem-perfil">
-
+                    <% if (dadosRecord.image) { %>
+                        <img src="data:image/png;base64,<%= dadosRecord.image.toString('base64') %>" class="div-imagem-perfil" />
+                    <% } else { %>
+                        <p>Você ainda não adicionou uma imagem de perfil.</p>
+                    <% } %>
                 </div>
                 <div id="edit-imagem-perfil">
                     <i class="material-icons" id="i-photo">photo_camera</i>
                     <p id="p-edit-imagem">Edit your photo</p>
                 </div>
                 <input type="file" id="input-file" style="display: none;">
+
+                <form id="upload-form" action="/upload" method="POST" enctype="multipart/form-data" style="display: none;">
+                    <input type="file" id="input-file" name="image" style="display: none;">
+                </form>
             </div>
 
             <div id="div-nome">
-                <p id="p-nome"><%= dadosRecord %></p>
+                <p id="p-nome"><%= dadosRecord.userName %></p>
             </div>
         </section>
 
@@ -118,7 +126,9 @@
                     const divImagemPerfil = document.getElementById('div-imagem-perfil');
                     divImagemPerfil.innerHTML = '';
                     divImagemPerfil.appendChild(img);
-                    
+
+                    // Agora envia automaticamente o formulário para o backend
+                    document.getElementById('upload-form').submit();                    
                 };
                 reader.readAsDataURL(file);
             }

@@ -7,6 +7,7 @@ const publicationModel = require('../models/publicationModel')
 const { where } = require('sequelize')
 const bcrypt = require('bcryptjs')
 const userAuth = require('../middlewares/authenticate')
+const multer = require('multer');
 
 
 
@@ -14,6 +15,40 @@ const userAuth = require('../middlewares/authenticate')
 router.get('/cadastro', (req, res) =>{
     res.render('userEjs/record')
 })
+
+
+// Configurando multer
+const storage = multer.memoryStorage(); // Armazena a imagem na memória
+const upload = multer({ storage: storage });
+
+
+
+//ROTA DE CRIAÇÃO/ATUALIZAÇÃO DE IMAGEM DE USER
+router.post('/upload', upload.single('image'), (req, res) => {
+    if (!req.session.user) {
+        return res.status(401).send('Usuário não autenticado');
+    }
+
+    if (!req.file) {
+        return res.status(400).send('Nenhum arquivo foi enviado.');
+    }
+
+    const userId = req.session.user.id;
+    const imageBuffer = req.file.buffer; // O arquivo está acessível aqui
+
+    // Atualiza a imagem do usuário no banco de dados
+    recordModel.update(
+        { image: imageBuffer },
+        { where: { id: userId } }
+    )
+    .then(() => {
+        res.redirect('/profile'); // Redireciona para a página de perfil
+    })
+    .catch((error) => {
+        console.error(`Erro ao salvar a imagem para o usuário ${userId}: ${error}`);
+        res.status(500).send('Erro ao salvar a imagem');
+    });
+});
 
 
 
