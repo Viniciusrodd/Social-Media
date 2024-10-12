@@ -18,13 +18,24 @@ router.get('/homepage', userAuth, (req, res) =>{
         include: [
             {
                 model: recordModel,
-                attributes: ['fullName', 'userName']
+                attributes: ['fullName', 'userName', 'image']
             }
         ]
     })
     .then((publicationData) =>{
         if(req.session.user){
             const user = req.session.user
+
+            // Convertendo a imagem BLOB para Base64
+            publicationData.forEach(publication => {
+                if (publication.record && publication.record.image) {
+                    // Convertendo a imagem em Base64
+                    publication.record.image = publication.record.image.toString('base64');
+                    // Adicionando o prefixo para a URL de dados
+                    publication.record.image = `data:image/jpeg;base64,${publication.record.image}`;
+                }
+            });
+
             res.render('paginasBase/homePage',{
                 dadosPublications: publicationData,
                 userData: user
@@ -59,11 +70,20 @@ router.get('/profile', userAuth, (req, res) =>{
         where: { userId: req.session.user.id }
     })
     .then((publicationData) => {
+
         // Buscar dados do usuário, incluindo o campo da imagem
         recordModel.findOne({
             where: { id: user.id }  // Usando o id do usuário logado
         })
         .then((userData) => {
+            // Verifique se a imagem existe antes de tentar convertê-la
+            if (userData && userData.image) {
+                // Convertendo a imagem em Base64
+                userData.image = userData.image.toString('base64');
+                // Adicionando o prefixo para a URL de dados
+                userData.image = `data:image/jpeg;base64,${userData.image}`;
+            }
+            
             res.render('paginasBase/profile', {
                 dadosRecord: userData,  // Inclui os dados completos do usuário, inclusive a imagem
                 dadosPublications: publicationData

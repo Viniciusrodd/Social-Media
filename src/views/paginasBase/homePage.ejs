@@ -53,10 +53,7 @@
             <div id="publications-container">
                 <div id="publishing">
                     <h1 class="h1-shortcuts">PUBLISH HERE</h1>
-
-                    <div id="perfil-image">
-                
-                    </div>
+                    
                     <form action="/publications/postings" method="post">
                         <input type="text" name="title" id="ititle" placeholder="Your Title here">
                 
@@ -71,7 +68,7 @@
                     <% dadosPublications.forEach((dados) =>{ %>
                         <div id="publications-postings-container">
                             <div id="perfil-image-publications">
-                
+                                <img id="img-perfil" src="<%= dados.record.image %>">
                             </div>
                             <p id="p-publications">
                                 Posted by: <ins><%= dados.record.fullName %></ins> 

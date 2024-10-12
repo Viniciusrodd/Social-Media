@@ -22,7 +22,7 @@ h1{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    padding: 35px 0px 35px 0px;
     width: 100%;
     background-image: url(../paginasBaseCss/imagens/section-img-4.jpg);
     background-position: center;
@@ -42,6 +42,7 @@ h1{
     box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px,
     rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, 
     rgba(240, 46, 170, 0.05) -25px 25px;
+    margin-bottom: 60px;
 }
 
 form{
@@ -49,7 +50,7 @@ form{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    padding: 5px 0px 5px 0px;
     width: 100%;
 }
 
@@ -132,4 +133,53 @@ button:hover{
 .swal2-confirm {
     width: auto !important;
     padding: 10px 20px !important;
+}
+
+#div-imagem-capa{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0px 5px 0px;
+    width: 90%;
+    margin: 20px 0px 40px 0px;
+    border-radius: 30px;
+    border: 2px solid black;
+    background-color: white;
+}
+
+#div-imagem-perfil{
+    height: 150px;
+    width: 150px;
+    margin: 20px;
+    background-color: rgba(0, 0, 0, 0.475);
+    border: 3px solid black;
+    border-radius: 100px;
+}
+
+#edit-imagem-perfil{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    width: 55%;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.475);
+    margin-bottom: 35px;
+    cursor: pointer;
+}
+#edit-imagem-perfil:hover{
+    background-color: rgba(0, 0, 0, 0.613);
+}
+
+#p-edit-imagem{
+    font-size: 17px;
+    color: white;
+    margin: 0px 0px 0px 10px;
+}
+
+#i-photo {
+    font-size: 25px;
+    color: white;
 }

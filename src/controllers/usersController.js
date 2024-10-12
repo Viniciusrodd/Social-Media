@@ -19,12 +19,21 @@ router.get('/cadastro', (req, res) =>{
 
 // Configurando multer
 const storage = multer.memoryStorage(); // Armazena a imagem na memória
-const upload = multer({ storage: storage });
+const image = multer({ 
+    storage: storage,
+    fileFilter: (req, file, cb) => {
+        const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+        if (!allowedTypes.includes(file.mimetype)) {
+            return cb(new Error('Tipo de arquivo não permitido. Envie apenas imagens jpeg, png ou gif.'));
+        }
+        cb(null, true);
+    }
+ });
 
 
 
-//ROTA DE CRIAÇÃO/ATUALIZAÇÃO DE IMAGEM DE USER
-router.post('/upload', upload.single('image'), (req, res) => {
+//ROTA DE ATUALIZAÇÃO DE IMAGEM DE USER
+router.post('/upload', image.single('image'), (req, res) => {
     if (!req.session.user) {
         return res.status(401).send('Usuário não autenticado');
     }
@@ -36,7 +45,7 @@ router.post('/upload', upload.single('image'), (req, res) => {
     const userId = req.session.user.id;
     const imageBuffer = req.file.buffer; // O arquivo está acessível aqui
 
-    // Atualiza a imagem do usuário no banco de dados
+    // Atuaslizando a imagem do usuário no banco de dados
     recordModel.update(
         { image: imageBuffer },
         { where: { id: userId } }
@@ -52,51 +61,47 @@ router.post('/upload', upload.single('image'), (req, res) => {
 
 
 
-//ROTA DE CRIAÇÃO DE DADOS NA TABELA RECORD
-router.post('/savingRecords', (req, res) =>{
-    var nameVar = req.body.name
-    var userNameVar = req.body.username
-    var emailVar = req.body.email
-    var passwordVar = req.body.password
-    var genderVar = req.body.radio
+// Rota POST para salvar os registros
+router.post('/savingRecords', image.single('imageCreate'), async (req, res) => {
+    try {
+        const { name, username, email, password } = req.body;
 
-    //VERIFICAÇÕES:
-    if(!nameVar || !userNameVar || !emailVar || !passwordVar || !genderVar){
-        return res.redirect('/cadastro?error=Insira os campos corretamente.')
+        // Verificações básicas
+        if (!req.file) {
+            return res.status(400).send('Nenhum arquivo foi enviado.');
+        }
+
+        if (!name || !username || !email || !password) {
+            return res.redirect('/cadastro?error=Insira os campos corretamente.');
+        }
+
+        // Verificação de existência de e-mail no banco
+        const userExists = await recordModel.findOne({ where: { email: email } });
+        if (userExists) {
+            return res.redirect('/cadastro?error=Email já está em uso, tente outro.');
+        }
+
+        // Geração de hash da senha
+        const salt = bcrypt.genSaltSync(10);
+        const hashedPassword = bcrypt.hashSync(password, salt);
+
+        // Salvando o registro no banco
+        await recordModel.create({
+            fullName: name,
+            userName: username,
+            email: email,
+            password: hashedPassword,
+            image: req.file.buffer // Salvando o buffer da imagem
+        });
+
+        console.log('Registro criado com sucesso');
+        res.redirect('/login');
+
+    } catch (error) {
+        console.error(`Erro ao criar registro: ${error}`);
+        res.status(500).send('Erro ao processar o registro');
     }
-    
-    //VERIFICAÇÃO DE EXISTENCIA DE EMAIL E GERAÇÃO DE HASH
-    recordModel.findOne({
-        where: {
-            email: emailVar
-        }
-    })
-    .then((dadosEmail) =>{
-        if(dadosEmail == undefined){
-            var salt = bcrypt.genSaltSync(10)
-            var hash = bcrypt.hashSync(passwordVar, salt)
-
-            recordModel.create({
-                fullName: nameVar,
-                userName: userNameVar,
-                email: emailVar,
-                password: hash
-            })
-            .then(() =>{
-                console.log('Table Fields created')
-                res.redirect('/login')
-            })
-            .catch((error) =>{
-                console.log(`erro ao criar campos ${error}`)
-            })
-        }else{
-            //gerando msg de aviso sobre email já existente no front com queryparams
-            //queryparams(não é recomendável por segurança)
-            return res.redirect('/cadastro?error=Email já está em uso, tente outro.')
-        }
-    })
-})
-
+});
 
 
 //ROTA DE LOGIN

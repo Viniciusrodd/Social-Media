@@ -135,13 +135,13 @@ a:hover{
     border: 3px solid black;
     border-radius: 100px;
 }
-.div-imagem-perfil{
-    height: 200px;
-    width: 200px;
-    background-color: rgba(0, 0, 0, 0.475);
-    border-radius: 100px;
+
+#img-perfil{
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    background-size: contain;
     background-position: center;
-    background-size: cover;
 }
 
 #edit-imagem-perfil{

@@ -28,20 +28,16 @@
             <div id="div-imagem-capa">
                 
                 <div id="div-imagem-perfil">
-                    <% if (dadosRecord.image) { %>
-                        <img src="data:image/png;base64,<%= dadosRecord.image.toString('base64') %>" class="div-imagem-perfil" />
-                    <% } else { %>
-                        <p>Você ainda não adicionou uma imagem de perfil.</p>
-                    <% } %>
+                    <img id="img-perfil" src="<%= dadosRecord.image %>" />                   
                 </div>
                 <div id="edit-imagem-perfil">
                     <i class="material-icons" id="i-photo">photo_camera</i>
                     <p id="p-edit-imagem">Edit your photo</p>
                 </div>
-                <input type="file" id="input-file" style="display: none;">
 
+                <!-- Formulário de upload de imagem -->
                 <form id="upload-form" action="/upload" method="POST" enctype="multipart/form-data" style="display: none;">
-                    <input type="file" id="input-file" name="image" style="display: none;">
+                    <input type="file" id="input-file" name="image">
                 </form>
             </div>
 
@@ -78,7 +74,7 @@
                     <% dadosPublications.forEach((dados) =>{ %>
                         <div id="publications-postings-container">
                             <div id="perfil-image-publications">
-                
+                                <img id="img-perfil" src="<%= dadosRecord.image %>" />                   
                             </div>
                             <div id="publications-postings">
                                 <h1 id="h1-publications"><%= dados.title %></h1>
@@ -107,14 +103,14 @@
             text: `This "Profile page" isn't work yet!`,
             icon: 'warning',
             confirmButtonText: 'Cool',
-        })
+        });
 
-
+        // Ao clicar no ícone, abre o seletor de arquivo
         document.getElementById('edit-imagem-perfil').addEventListener('click', () => {
             document.getElementById('input-file').click();
         });
 
-        
+        // Quando o arquivo for selecionado, o formulário é enviado automaticamente
         document.getElementById('input-file').addEventListener('change', (event) => {
             const file = event.target.files[0];
             if (file) {
@@ -122,39 +118,39 @@
                 reader.onload = (e) => {
                     const img = document.createElement('img');
                     img.src = e.target.result;
-                    img.classList.add('div-imagem-perfil')
+                    img.classList.add('div-imagem-perfil');
                     const divImagemPerfil = document.getElementById('div-imagem-perfil');
                     divImagemPerfil.innerHTML = '';
                     divImagemPerfil.appendChild(img);
 
-                    // Agora envia automaticamente o formulário para o backend
+                    // Envia o formulário automaticamente para o backend
                     document.getElementById('upload-form').submit();                    
                 };
                 reader.readAsDataURL(file);
             }
         });
 
-
-        var deleteForm = document.querySelectorAll('#formDelete')
-            deleteForm.forEach(form => {
-                form.addEventListener('submit', function(event) {
-                    event.preventDefault(); // Evita que o formulário seja enviado automaticamente
-                    
-                    Swal.fire({
-                        title: 'Are you sure?',
-                        text: 'You will not be able to undo this action!',
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonText: 'Yes, delete!',
-                        cancelButtonText: 'Cancel'
-                    })
-                    .then((result) =>{
-                        if(result.isConfirmed){
-                            this.submit(); 
-                        }
-                    })
+        // Função de confirmação de exclusão
+        var deleteForm = document.querySelectorAll('#formDelete');
+        deleteForm.forEach(form => {
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // Evita que o formulário seja enviado automaticamente
+                
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: 'You will not be able to undo this action!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes, delete!',
+                    cancelButtonText: 'Cancel'
+                })
+                .then((result) => {
+                    if (result.isConfirmed) {
+                        this.submit(); 
+                    }
                 });
             });
+        });
     </script>
 </body>
 </html>

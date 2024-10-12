@@ -192,6 +192,10 @@ div#publishing{
     background-position: center;
 }
 
+form{
+    margin-top: 40px;
+}
+
 
 div#publications{
     display: flex;
@@ -263,12 +267,19 @@ button:hover{
 }
 
 #perfil-image-publications{
-    height: 90px;
-    width: 90px;
+    height: 120px;
+    width: 120px;
     margin-bottom: 40px;
     border-radius: 50%;
-    background-image: url(./imagens/user.jpg);
-    background-size: cover;
+    background-size: contain;
+    background-position: center;
+}
+
+#img-perfil{
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    background-size: contain;
     background-position: center;
 }
 
