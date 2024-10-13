@@ -48,19 +48,23 @@
 
         <section id="section-container-2">
             <div id="shortcuts">
-                <h1 id="h1-shortcuts">YOUR ACCOUNT</h1>
-                <ul style="list-style-type: none;">
-                    <li>
-                        <i class="material-icons">person</i>
-                        <label for="fullname">Change your fullName:</label>
-                        <input type="text" name="fullname" class="inputs-edit-account">
-                    </li>
-                    <li>
-                        <i class="material-icons">edit</i>
-                        <label for="username">Change your userName:</label>
-                        <input type="text" name="userName" class="inputs-edit-account">
-                    </li>
-                </ul>
+                <h1 id="h1-shortcuts">EDIT ACCOUNT</h1>
+                
+                <form action="/updateNames" method="post">
+                    <label for="fullname" class="label-edit-account">Change your fullName:</label>
+                    <input type="text" name="fullname" class="inputs-edit-account" value="<%= dadosRecord.fullName %>">
+                    
+                    <label for="username" class="label-edit-account">Change your userName:</label>
+                    <input type="text" name="userName" class="inputs-edit-account" value="<%= dadosRecord.userName %>">
+                    
+                    <button class="btt-edit-account">EDIT</button>
+                </form>
+                   
+
+                <form action="/deleteAccount">
+                    <h1 id="h1-shortcuts">DELETE ACCOUNT</h1>
+                    <button class="btt-delete-account">DELETE</button>
+                </form>
             </div>
 
             <div id="publications-container">
@@ -93,12 +97,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        Swal.fire({
-            title: 'Hello partner!',
-            text: `This "Profile page" isn't work yet!`,
-            icon: 'warning',
-            confirmButtonText: 'Cool',
-        });
 
         // Ao clicar no ícone, abre o seletor de arquivo
         document.getElementById('edit-imagem-perfil').addEventListener('click', () => {

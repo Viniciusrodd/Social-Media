@@ -17,7 +17,7 @@ router.get('/cadastro', (req, res) =>{
 })
 
 
-// Configurando multer
+//CONFIGURANDO MULTER
 const storage = multer.memoryStorage(); // Armazena a imagem na memória
 const image = multer({ 
     storage: storage,
@@ -61,7 +61,7 @@ router.post('/upload', image.single('image'), (req, res) => {
 
 
 
-// Rota POST para salvar os registros
+//ROTA DE CADASTRO
 router.post('/savingRecords', image.single('imageCreate'), async (req, res) => {
     try {
         const { name, username, email, password } = req.body;
@@ -219,6 +219,32 @@ router.post('/editprofile', (req, res) =>{
         })    
     }
 })
+
+
+
+//ROTA DE EDIÇÃO DE NOMES DE USUÁRIO
+router.post('/updateNames', (req, res) =>{
+    var fullnameVar = req.body.fullname;
+    var userNameVar = req.body.userName;
+    var userId = req.session.user.id;
+
+    recordModel.update({
+        fullname: fullnameVar,
+        userName: userNameVar
+    }, {
+        where: {
+            id: userId
+        }
+    })
+    .then(() =>{
+        res.redirect('/profile')
+    })
+    .catch((error) =>{
+        console.log(`Update a user names error ${error}`)
+    })
+
+})
+
 
 
 
