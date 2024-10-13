@@ -11,12 +11,6 @@ const multer = require('multer');
 
 
 
-//ROTA CADASTRO
-router.get('/cadastro', (req, res) =>{
-    res.render('userEjs/record')
-})
-
-
 //CONFIGURANDO MULTER
 const storage = multer.memoryStorage(); // Armazena a imagem na memória
 const image = multer({ 
@@ -102,13 +96,6 @@ router.post('/savingRecords', image.single('imageCreate'), async (req, res) => {
         res.status(500).send('Erro ao processar o registro');
     }
 });
-
-
-//ROTA DE LOGIN
-router.get('/login', (req, res) =>{
-    res.render('userEjs/login')
-})
-
 
 
 //ROTA DE AUTENTICAÇÃO DE USER
@@ -243,6 +230,34 @@ router.post('/updateNames', (req, res) =>{
         console.log(`Update a user names error ${error}`)
     })
 
+})
+
+
+
+//ROTA DE DELETAR CONTA DE USUÁRIO
+router.post('/deleteAccount', (req, res) =>{
+    var idVar = req.body.id;
+
+    if(idVar != undefined){
+        publicationModel.destroy({
+            where: {
+                userId: idVar
+            }
+        })
+        .then(() => {
+            return recordModel.destroy({
+                where: {
+                    id: idVar
+                }
+            });
+        })
+        .then(() => {
+            res.redirect('/login');
+        })
+        .catch(() => {
+            res.redirect('/profile');
+        });
+    }
 })
 
 

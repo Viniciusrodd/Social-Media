@@ -61,8 +61,9 @@
                 </form>
                    
 
-                <form action="/deleteAccount">
+                <form action="/deleteAccount" method="post" id="accountDelete">
                     <h1 id="h1-shortcuts">DELETE ACCOUNT</h1>
+                    <input type="hidden" name="id" value="<%= dadosRecord.id %>">
                     <button class="btt-delete-account">DELETE</button>
                 </form>
             </div>
@@ -144,6 +145,28 @@
                 });
             });
         });
+
+
+
+        var accountDelete = document.getElementById('accountDelete');
+        accountDelete.addEventListener('submit', (event) =>{
+            event.preventDefault();
+
+            Swal.fire({
+                    title: 'Are you sure?',
+                    text: 'You will not be able to undo this action!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes, delete!',
+                    cancelButtonText: 'Cancel'
+                })
+                .then((result) => {
+                    if (result.isConfirmed) {
+                        accountDelete.submit(); 
+                    }
+                });
+        })
+
     </script>
 </body>
 </html>

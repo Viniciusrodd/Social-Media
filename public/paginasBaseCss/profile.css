@@ -222,8 +222,8 @@ div#shortcuts{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 40px;
-    width: 20%;
+    height: 75vh;
+    width: 28%;
     border-radius: 20px;
     background-color: white;
     box-shadow: rgba(240, 46, 170, 0.4) 0px 5px, rgba(240, 46, 170, 0.3) 0px 10px,
@@ -241,7 +241,7 @@ div#shortcuts{
 
 .inputs-edit-account{
     height: 40px;
-    width: 90%;
+    width: 70%;
     margin: 5px 0px 0px 0px;
     color: rgba(0, 0, 0, 0.35);
 }

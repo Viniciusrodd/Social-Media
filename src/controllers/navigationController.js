@@ -9,6 +9,21 @@ const bcrypt = require('bcryptjs')
 const userAuth = require('../middlewares/authenticate')
 
 
+
+//ROTA CADASTRO
+router.get('/cadastro', (req, res) =>{
+    res.render('userEjs/record')
+})
+
+
+
+//ROTA DE LOGIN
+router.get('/login', (req, res) =>{
+    res.render('userEjs/login')
+})
+
+
+
 //ROTA DA HOME PAGE
 router.get('/homepage', userAuth, (req, res) =>{
     publicationModel.findAll({
