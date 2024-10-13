@@ -222,7 +222,7 @@ div#shortcuts{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 50vh;
+    padding: 40px;
     width: 20%;
     border-radius: 20px;
     background-color: white;
