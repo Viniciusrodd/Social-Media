@@ -119,7 +119,7 @@ router.post('/authenticate', (req, res) =>{
                     email: dadosLogin.email,
                     userName: dadosLogin.userName
                 }
-                res.redirect('/homepage')
+                res.redirect(`/homepage?sucess=This is like a "blog" for postings your stuffs and see whats happens`)
             }else{
                 res.redirect('/login?error=Preencha os dados corretamente.')
             }
