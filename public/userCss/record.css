@@ -149,11 +149,13 @@ button:hover{
 }
 
 #div-imagem-perfil{
-    height: 150px;
-    width: 150px;
+    height: 130px;
+    width: 130px;
     margin: 20px;
-    background-color: rgba(0, 0, 0, 0.475);
-    border: 3px solid black;
+    background-image: url(../paginasBaseCss/imagens/user.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: none;
     border-radius: 100px;
 }
 
@@ -165,7 +167,6 @@ button:hover{
     height: 35px;
     width: 55%;
     border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.475);
     margin-bottom: 35px;
     cursor: pointer;
 }
@@ -173,10 +174,18 @@ button:hover{
     background-color: rgba(0, 0, 0, 0.613);
 }
 
-#p-edit-imagem{
+
+#input-edit-imagem{
+    height: 38px;
+    width: 80%;
+    border: none;
     font-size: 17px;
-    color: white;
-    margin: 0px 0px 0px 10px;
+    margin: 0px 0px 10px 0px;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+#input-edit-imagem:hover{
+    transform: translateX(12px);
 }
 
 #i-photo {
