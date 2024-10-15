@@ -158,6 +158,15 @@ button:hover{
     border: none;
     border-radius: 100px;
 }
+.imagem-perfil{
+    height: 130px;
+    width: 130px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: none;
+    border-radius: 100px;
+    margin: 0px;
+}
 
 #edit-imagem-perfil{
     display: flex;
