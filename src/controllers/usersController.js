@@ -210,27 +210,43 @@ router.post('/editprofile', (req, res) =>{
 
 
 //ROTA DE EDIÇÃO DE NOMES DE USUÁRIO
-router.post('/updateNames', (req, res) =>{
-    var fullnameVar = req.body.fullname;
-    var userNameVar = req.body.userName;
-    var userId = req.session.user.id;
+router.post('/updateNames', async (req, res) => {
+    try {
+        var fullnameVar = req.body.fullname;
+        var userNameVar = req.body.userName;
+        var userId = req.session.user.id;
 
-    recordModel.update({
-        fullname: fullnameVar,
-        userName: userNameVar
-    }, {
-        where: {
-            id: userId
+        // Verifica se já existe um registro com os mesmos valores
+        const record = await recordModel.findOne({
+            where: {
+                fullName: fullnameVar
+            }
+        });
+        if (record) {
+            // Registro já existe, redireciona para o perfil
+            console.log('Erro: fullName/userName já existentes')
+            return res.redirect('/profile?error=fullName já existentes');
         }
-    })
-    .then(() =>{
-        res.redirect('/profile')
-    })
-    .catch((error) =>{
-        console.log(`Update a user names error ${error}`)
-    })
 
-})
+        // Atualiza o registro do usuário
+        await recordModel.update({
+            fullName: fullnameVar,
+            userName: userNameVar
+        }, {
+            where: { 
+                id: userId 
+            }
+        });
+
+        console.log('Atualizado com sucesso')
+        res.redirect('/profile');
+
+    } catch (error) {
+        console.error(`An "updateName" internal error: ${error}`);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
 
 
 
