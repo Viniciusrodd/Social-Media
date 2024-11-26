@@ -224,8 +224,8 @@ router.post('/updateNames', async (req, res) => {
         });
         if (record) {
             // Registro já existe, redireciona para o perfil
-            console.log('Erro: fullName/userName já existentes')
-            return res.redirect('/profile?error=fullName já existentes');
+            console.log('Erro: fullName já existentes')
+            return res.redirect('/profile?error=fullName already exist');
         }
 
         // Atualiza o registro do usuário
@@ -239,7 +239,7 @@ router.post('/updateNames', async (req, res) => {
         });
 
         console.log('Atualizado com sucesso')
-        res.redirect('/profile');
+        res.redirect('/profile?sucess=Profile updated successfully');
 
     } catch (error) {
         console.error(`An "updateName" internal error: ${error}`);
